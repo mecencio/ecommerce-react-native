@@ -11,7 +11,9 @@ const CategoriesScreen = ({ navigation }) => {
 
     const handleSelectedCategory = item => {
         dispatch(selectedCategory(item.id));
-        //navigation.navigate();
+        navigation.navigate("Products", {
+            title: item.title,
+        });
     }
 
     const renderCategoriesItem = ({ item }) => (

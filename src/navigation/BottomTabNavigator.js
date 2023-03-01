@@ -22,8 +22,8 @@ export default BottomTabNavigator = () => {
                 options={{
                     tabBarIcon: () => (
                         <View style={styles.tabBarIcon}>
-                            <Ionicons name="home" size={25} color="black" />
-                            <Text>Home</Text>
+                            <Ionicons name="home" size={25} color="#c19963" />
+                            <Text style={styles.tabBarText}>Home</Text>
                         </View>
                     )
                 }}
