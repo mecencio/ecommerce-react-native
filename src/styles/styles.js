@@ -1,12 +1,13 @@
-import _BottomTabNavigator from "./_BottomTabNavigator";
-import _CartItem from "./_CartItem";
-import _CartScreen from "./_CartScreen";
-import _CategoriesItem from "./_CategoriesItem";
-import _CategoriesScreen from "./_CategoriesScreen";
-import _DetailScreen from "./_DetailScreen";
-import _IndexNavigator from "./_IndexNavigator";
-import _ProductsItem from "./_ProductsItem";
-import _ProductsScreen from "./_ProductsScreen";
+import _BottomTabNavigator from "./pages/_BottomTabNavigator";
+import _CartItem from "./pages/_CartItem";
+import _CartScreen from "./pages/_CartScreen";
+import _CategoriesItem from "./pages/_CategoriesItem";
+import _CategoriesScreen from "./pages/_CategoriesScreen";
+import _DetailScreen from "./pages/_DetailScreen";
+import _IndexNavigator from "./pages/_IndexNavigator";
+import _OrderItem from "./pages/_OrderItem";
+import _ProductsItem from "./pages/_ProductsItem";
+import _ProductsScreen from "./pages/_ProductsScreen";
 
 export default {
     ..._BottomTabNavigator,
@@ -17,5 +18,6 @@ export default {
     ..._IndexNavigator,
     ..._CartScreen,
     ..._DetailScreen,
-    ..._CartItem
+    ..._CartItem,
+    ..._OrderItem,
 }
