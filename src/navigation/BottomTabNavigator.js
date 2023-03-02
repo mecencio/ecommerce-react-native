@@ -3,6 +3,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "@expo/vector-icons/Ionicons"
 import IndexNavigator from "./IndexNavigator";
 import styles from "../styles/styles";
+import CartNavigator from "./CartNavigator";
 
 const BottomTabs = createBottomTabNavigator();
 
@@ -16,7 +17,7 @@ export default BottomTabNavigator = () => {
                 tabBarStyle: styles.tabBar
             }}
         >
-            <BottomTabs.Screen 
+            <BottomTabs.Screen
                 name="Index"
                 component={IndexNavigator}
                 options={{
@@ -24,6 +25,18 @@ export default BottomTabNavigator = () => {
                         <View style={styles.tabBarIcon}>
                             <Ionicons name="home" size={25} color="#c19963" />
                             <Text style={styles.tabBarText}>Home</Text>
+                        </View>
+                    )
+                }}
+            />
+            <BottomTabs.Screen
+                name="Cart"
+                component={CartNavigator}
+                options={{
+                    tabBarIcon: () => (
+                        <View style={styles.tabBarIcon}>
+                            <Ionicons name="cart" size={25} color="#c19963" />
+                            <Text style={styles.tabBarText}>Cart</Text>
                         </View>
                     )
                 }}

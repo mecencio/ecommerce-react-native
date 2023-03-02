@@ -1,5 +1,6 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import CategoriesScreen from "../screens/CategoriesScreen";
+import DetailsScreen from "../screens/DetailScreen";
 import ProductsScreen from "../screens/ProductsScreen";
 import colors from "../styles/constants/colors";
 import styles from "../styles/styles";
@@ -11,7 +12,7 @@ export default IndexNavigator = () => {
         <Stack.Navigator
             initialRouteName="Categories"
             screenOptions={{
-                headerShadowVisible: false,
+                headerShadowVisible: true,
                 headerStyle: styles.indexStyle,
                 headerTintColor: colors.primary,
                 headerTitleStyle: {
@@ -32,6 +33,13 @@ export default IndexNavigator = () => {
                 component={ProductsScreen}
                 options={({ route }) => ({
                     title: route.params.name
+                })}
+            />
+            <Stack.Screen
+                name="Details"
+                component={DetailsScreen}
+                options= {({ route }) => ({
+                    title:route.params.name
                 })}
             />
         </Stack.Navigator>

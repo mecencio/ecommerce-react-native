@@ -16,7 +16,9 @@ const ProductsScreen = ({ navigation, route }) => {
 
     const handleSelectedProduct = (item) => {
         dispatch(selectedProduct(item.id));
-        //navigation.navigate()
+        navigation.navigate("Details", {
+            name: item.name
+        })
     }
 
     const renderProductItem = ({ item }) => (

@@ -6,6 +6,7 @@ export default StyleSheet.create({
         backgroundColor: "#fff",
         marginBottom: 10,
         borderRadius: 50,
+        marginHorizontal: 10,
         height: 55,
         position: "absolute",
         shadowColor: "#000",
