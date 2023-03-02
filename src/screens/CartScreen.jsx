@@ -2,7 +2,7 @@ import React from "react";
 import { Text, View, FlatList, TouchableOpacity } from "react-native";
 import CartItem from "../components/CartItem"
 import { useSelector, useDispatch } from "react-redux";
-import { removeItem, decreaseItem } from "../store/actions/cart.action";
+import { removeItem, decreaseItem, confirmCart } from "../store/actions/cart.action";
 import styles from "../styles/styles";
 
 const CartScreen = () => {
@@ -18,6 +18,10 @@ const CartScreen = () => {
         dispatch(decreaseItem(id));
     };
 
+    const handleConfirmCart = () => {
+        dispatch(confirmCart(items, total));
+    }
+
     const renderCartItem = ({ item }) => (
         <CartItem item={item} onDelete={handleDeleteItem} onDecrease={handleDecreaseItem} />
     );
@@ -32,7 +36,7 @@ const CartScreen = () => {
                 />
             </View>
             <View style={styles.cartScreenFooter}>
-                <TouchableOpacity style={styles.cartScreenConfirm}>
+                <TouchableOpacity style={styles.cartScreenConfirm} onPress={handleConfirmCart}>
                     <Text>Confirmar</Text>
                     <View style={styles.cartScreenTotal}>
                         <Text style={styles.cartScreenText}>Total</Text>

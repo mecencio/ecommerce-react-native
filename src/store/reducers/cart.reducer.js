@@ -37,6 +37,8 @@ const CartReducer = (state = initialState, action) => {
         case REMOVE_ITEM:
             const newCart = [...state.items].filter(item => item.id !== action.itemId);
             return {...state, items: newCart, total: finalPrice(newCart)}
+        case CONFIRM_PURCHASE:
+            return state;
         default:
             return state;
     }

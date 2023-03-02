@@ -1,4 +1,5 @@
 import _BottomTabNavigator from "./_BottomTabNavigator";
+import _CartItem from "./_CartItem";
 import _CartScreen from "./_CartScreen";
 import _CategoriesItem from "./_CategoriesItem";
 import _CategoriesScreen from "./_CategoriesScreen";
@@ -16,4 +17,5 @@ export default {
     ..._IndexNavigator,
     ..._CartScreen,
     ..._DetailScreen,
+    ..._CartItem
 }
