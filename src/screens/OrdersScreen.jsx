@@ -10,6 +10,7 @@ const OrdersScreen = () => {
 
     useEffect(() => {
         dispatch(getOrders());
+        console.log(orders)
     }, []);
 
     const renderOrderItem = ({ item }) => (

@@ -35,7 +35,6 @@ export const confirmCart = (items, total) => {
                 }),
             })
             const result = await response.json();
-            console.log(result)
             dispatch({
                 type: CONFIRM_PURCHASE,
                 confirm: true,

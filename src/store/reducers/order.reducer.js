@@ -12,3 +12,5 @@ const OrderReducer = (state = initialState, action) => {
             return state;
     }
 }
+
+export default OrderReducer;

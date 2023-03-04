@@ -7,13 +7,13 @@ import styles from "../styles/styles";
 
 const Stack = createNativeStackNavigator();
 
-export default IndexNavigator = () => {
+export default HomeNavigator = () => {
     return (
         <Stack.Navigator
             initialRouteName="Categories"
             screenOptions={{
                 headerShadowVisible: true,
-                headerStyle: styles.indexStyle,
+                headerStyle: styles.HomeStyle,
                 headerTintColor: colors.primary,
                 headerTitleStyle: {
                     fontWeight: "bold",
@@ -25,7 +25,7 @@ export default IndexNavigator = () => {
                 name="Categories"
                 component={CategoriesScreen}
                 options={{
-                    title: "Index",
+                    title: "Home",
                 }}
             />
             <Stack.Screen

@@ -20,10 +20,10 @@ export default CartNavigator = () => {
             }}
         >
             <Stack.Screen
-                name="Carro"
+                name="Cart"
                 component={CartScreen}
                 options={{
-                    title: "Carro"
+                    title: "Cart"
                 }}
             />
         </Stack.Navigator>

@@ -1,14 +1,14 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import OrdersScreen from "../screens/OrdersScreen";
+import AuthScreen from "../screens/AuthScreen";
 import styles from "../styles/styles";
 import colors from "../styles/constants/colors";
 
 const Stack = createNativeStackNavigator();
 
-export default OrdersNavigator = () => {
-    return ( 
+const AuthNavigator = () => {
+    return (
         <Stack.Navigator
-            initialRouteName="Orders"
+            initialRouteName="Auth"
             screenOptions={{
                 headerShadowVisible: true,
                 headerStyle: styles.HomeStyle,
@@ -20,12 +20,14 @@ export default OrdersNavigator = () => {
             }}
         >
             <Stack.Screen
-                name="Orders"
-                component={OrdersScreen}
+                name="Auth"
+                component={AuthScreen}
                 options={{
-                    title: "Orders",
+                    title: "Auth",
                 }}
             />
         </Stack.Navigator>
     )
 }
+
+export default AuthNavigator;
