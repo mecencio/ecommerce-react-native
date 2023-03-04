@@ -36,4 +36,41 @@ export default StyleSheet.create({
         backgroundColor: colors.primary,
         marginVertical: 20,
     },
+    //Dark
+    authScreenDark: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    authScreenTitleDark: {
+        fontSize: 24,
+        marginBottom: 18,
+        textAlign: "center",
+        color: "white",
+    },
+    authScreenContainerDark: {
+        width: "80%",
+        maxWidth: 400,
+        padding: 12,
+        margin: 12,
+        borderColor: colors.SALMON_PINK,
+        borderWidth: 1,
+        borderRadius: 10,
+        backgroundColor: colors.CHOCOLATE_COSMOS,
+    },
+    authScreenPromptDark: {
+        alignItems: "center",
+    },
+    authScreenPromptMessageDark: {
+        fontSize: 16,
+        color: "#333",
+    },
+    authScreenPromptButtonDark: {
+        fontSize: 16,
+        color:"white",
+    },
+    authScreenButtonDark: {
+        backgroundColor: colors.CHOCOLATE_COSMOS,
+        marginVertical: 20,
+    },
 })

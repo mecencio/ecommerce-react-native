@@ -1,5 +1,8 @@
+import _AddressItem from "./pages/_AddressItem";
+import _AddressListScreen from "./pages/_AddressListScreen";
 import _AuthScreen from "./pages/_AuthScreen";
 import _BottomTabNavigator from "./pages/_BottomTabNavigator";
+import _CardItem from "./pages/_CardItem";
 import _CartItem from "./pages/_CartItem";
 import _CartScreen from "./pages/_CartScreen";
 import _CategoriesItem from "./pages/_CategoriesItem";
@@ -10,6 +13,7 @@ import _input from "./pages/_input";
 import _OrderItem from "./pages/_OrderItem";
 import _ProductsItem from "./pages/_ProductsItem";
 import _ProductsScreen from "./pages/_ProductsScreen";
+import _ProfileScreen from "./pages/_ProfileScreen";
 
 export default {
     ..._BottomTabNavigator,
@@ -24,4 +28,8 @@ export default {
     ..._OrderItem,
     ..._AuthScreen,
     ..._input,
+    ..._ProfileScreen,
+    ..._AddressListScreen,
+    ..._AddressItem,
+    ..._CardItem,
 }

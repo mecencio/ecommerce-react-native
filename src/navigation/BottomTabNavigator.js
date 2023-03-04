@@ -5,7 +5,8 @@ import HomeNavigator from "./HomeNavigator";
 import styles from "../styles/styles";
 import CartNavigator from "./CartNavigator";
 import OrdersNavigator from "./OrdersNavigator";
-import AuthNavigator from "./AuthNavigator";
+import ProfileNavigator from "./ProfileNavigator";
+import AddressNavigator from "./AddressNavigator";
 
 const BottomTabs = createBottomTabNavigator();
 
@@ -16,7 +17,7 @@ export default BottomTabNavigator = () => {
             screenOptions={{
                 headerShown: false,
                 tabBarShowLabel: false,
-                tabBarStyle: styles.tabBar
+                tabBarStyle: styles.tabBar,
             }}
         >
             <BottomTabs.Screen
@@ -56,13 +57,13 @@ export default BottomTabNavigator = () => {
                 }}
             />
             <BottomTabs.Screen
-                name="AuthTab"
-                component={AuthNavigator}
+                name="ProfileTab"
+                component={ProfileNavigator}
                 options={{
                     tabBarIcon: () => (
                         <View style={styles.tabBarIcon}>
-                            <Ionicons name="log-in-outline" size={25} color="#c19963" />
-                            <Text style={styles.tabBarText}>Auth</Text>
+                            <Ionicons name="person-circle-outline" size={25} color="#c19963" />
+                            <Text style={styles.tabBarText}>Profile</Text>
                         </View>
                     )
                 }}

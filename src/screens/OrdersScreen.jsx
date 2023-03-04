@@ -10,11 +10,10 @@ const OrdersScreen = () => {
 
     useEffect(() => {
         dispatch(getOrders());
-        console.log(orders)
     }, []);
 
     const renderOrderItem = ({ item }) => (
-        <OrderItem item={item} onDelete={console.log("On Delete")} /> 
+        <OrderItem item={item} onDelete={() => console.log("On Delete")} /> 
     )
 
     return (

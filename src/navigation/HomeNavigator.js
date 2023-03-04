@@ -1,4 +1,6 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { TouchableOpacity } from "react-native";
+import Ionicons from "@expo/vector-icons/Ionicons"
 import CategoriesScreen from "../screens/CategoriesScreen";
 import DetailsScreen from "../screens/DetailScreen";
 import ProductsScreen from "../screens/ProductsScreen";

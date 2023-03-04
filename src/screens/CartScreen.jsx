@@ -27,24 +27,33 @@ const CartScreen = () => {
     );
 
     return (
-        <View style={styles.cartScreenContainer}>
-            <View style={styles.cartScreenList}>
-                <FlatList
-                    data={items}
-                    keyExtractor={item => item.id}
-                    renderItem={renderCartItem}
-                />
-            </View>
-            <View style={styles.cartScreenFooter}>
-                <TouchableOpacity style={styles.cartScreenConfirm} onPress={handleConfirmCart}>
-                    <Text>Confirmar</Text>
-                    <View style={styles.cartScreenTotal}>
-                        <Text style={styles.cartScreenText}>Total</Text>
-                        <Text style={styles.cartScreenText}>$ {total}</Text>
+        items.length === 0 ?
+            (
+                <View>
+                    <Text>Title</Text>
+                    <Text>Desc</Text>
+                </View>
+            )
+            : (
+                <View style={styles.cartScreenContainer}>
+                    <View style={styles.cartScreenList}>
+                        <FlatList
+                            data={items}
+                            keyExtractor={item => item.id}
+                            renderItem={renderCartItem}
+                        />
                     </View>
-                </TouchableOpacity>
-            </View>
-        </View>
+                    <View style={styles.cartScreenFooter}>
+                        <TouchableOpacity style={styles.cartScreenConfirm} onPress={() => console.log(items.length)}>
+                            <Text>Confirmar</Text>
+                            <View style={styles.cartScreenTotal}>
+                                <Text style={styles.cartScreenText}>Total</Text>
+                                <Text style={styles.cartScreenText}>$ {total}</Text>
+                            </View>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            )
     )
 }
 
