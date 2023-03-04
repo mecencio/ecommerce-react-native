@@ -1,4 +1,4 @@
-import { URL_AUTH_SIGNUP } from "../../data/database";
+import { URL_AUTH_SIGNUP } from "../../env/database";
 
 export const SIGNUP = "SIGNUP";
 

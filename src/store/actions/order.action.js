@@ -1,4 +1,4 @@
-import { URL_API } from "../../data/database";
+import { URL_API } from "../../env/database";
 
 export const GET_ORDERS = "GET_ORDERS";
 
