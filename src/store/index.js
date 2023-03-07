@@ -7,6 +7,7 @@ import OrderReducer from "./reducers/order.reducer";
 import AuthReducer from "./reducers/auth.reducer";
 import AddressReducer from "./reducers/address.reducer";
 import CardReducer from "./reducers/card.reducer";
+import ImageReducer from "./reducers/image.reducer";
 
 const RootReducer = combineReducers({
     categories: CategoryReducer,
@@ -16,6 +17,7 @@ const RootReducer = combineReducers({
     auth: AuthReducer,
     address: AddressReducer,
     card: CardReducer,
+    image: ImageReducer,
 })
 
 export default createStore(RootReducer, applyMiddleware(thunk))

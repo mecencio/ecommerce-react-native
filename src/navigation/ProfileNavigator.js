@@ -6,6 +6,7 @@ import styles from "../styles/styles";
 import colors from "../styles/constants/colors";
 import AddressNavigator from "./AddressNavigator";
 import CardNavigator from "./CardsNavigator";
+import NewImageScreen from "../screens/NewImageScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -43,6 +44,10 @@ const ProfileNavigator = () => {
                 options={{
                     headerShown: false,
                 }}
+            />
+            <Stack.Screen
+            name="NewImage"
+            component={NewImageScreen}
             />
         </Stack.Navigator>
     )

@@ -12,10 +12,24 @@ export default StyleSheet.create({
         flexDirection: "row",
         justifyContent: "center",
         alignItems: "center",
-        height: 70,
+        height: 90,
         marginHorizontal: 20,
         borderBottomColor: colors.CHOCOLATE_COSMOS,
         borderBottomWidth: 1,
+    },
+    profileScreenImage: {
+        width: 70,
+        height: 70,
+        borderRadius: 35,
+    },
+    profileScreenEmptyImage: {
+        width: 70,
+        height: 70,
+        borderRadius: 35,
+        borderWidth: 1,
+        borderColor: "black",
+        justifyContent: "center",
+        alignItems: "center"
     },
     profileScreenHeaderText: {
         marginLeft: 14,

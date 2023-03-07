@@ -2,75 +2,62 @@ import { StyleSheet } from "react-native";
 import colors from "../constants/colors";
 
 export default StyleSheet.create({
+    authScreenBackground: {
+        flex: 1, 
+        justifyContent: "center",
+    },
     authScreen: {
         flex: 1,
-        justifyContent: "center",
+        justifyContent: "flex-start",
         alignItems: "center",
+        backgroundColor: colors.BLACK_TRANSPARENT,
     },
-    authScreenTitle: {
-        fontSize: 24,
-        marginBottom: 18,
-        textAlign: "center",
+    authScreenImageContainer: {
+        flex:1,
+        justifyContent: "flex-start",
+        alignItems: "center",
+        width: "100%",
+        marginTop: 70,
+        maxHeight: 130,
+        paddingVertical: 18,
+    },
+    authScreenImage: {
+        width: "90%",
+        resizeMode: "contain",
     },
     authScreenContainer: {
         width: "80%",
         maxWidth: 400,
         padding: 12,
         margin: 12,
-        borderColor: colors.primary,
-        borderWidth: 1,
         borderRadius: 10,
-        backgroundColor: colors.background,
-    },
-    authScreenPrompt: {
-        alignItems: "center",
-    },
-    authScreenPromptMessage: {
-        fontSize: 16,
-        color: "#333",
-    },
-    authScreenPromptButton: {
-        fontSize: 16,
     },
     authScreenButton: {
-        backgroundColor: colors.primary,
-        marginVertical: 20,
-    },
-    //Dark
-    authScreenDark: {
-        flex: 1,
+        width: "100%",
+        backgroundColor: colors.TAWNY,
         justifyContent: "center",
         alignItems: "center",
-    },
-    authScreenTitleDark: {
-        fontSize: 24,
-        marginBottom: 18,
-        textAlign: "center",
-        color: "white",
-    },
-    authScreenContainerDark: {
-        width: "80%",
-        maxWidth: 400,
-        padding: 12,
-        margin: 12,
-        borderColor: colors.SALMON_PINK,
-        borderWidth: 1,
+        padding: 8,
+        marginVertical: 10,
         borderRadius: 10,
-        backgroundColor: colors.CHOCOLATE_COSMOS,
     },
-    authScreenPromptDark: {
-        alignItems: "center",
+    authScreenText: {
+        color: "white"
     },
-    authScreenPromptMessageDark: {
-        fontSize: 16,
-        color: "#333",
-    },
-    authScreenPromptButtonDark: {
-        fontSize: 16,
-        color:"white",
-    },
+
+    //DARK
     authScreenButtonDark: {
-        backgroundColor: colors.CHOCOLATE_COSMOS,
-        marginVertical: 20,
+        width: "100%",
+        justifyContent: "center",
+        alignItems: "center",
+        padding: 8,
+        marginVertical: 10,
+        borderRadius: 10,
+        borderColor: colors.PRINCETON_ORANGE,
+        borderWidth: 1,
+        backgroundColor: colors.BLACK_TRANSPARENT
+    },
+    authScreenTextDark: {
+        color: colors.PRINCETON_ORANGE,
     },
 })

@@ -10,10 +10,12 @@ import _CategoriesScreen from "./pages/_CategoriesScreen";
 import _DetailScreen from "./pages/_DetailScreen";
 import _HomeNavigator from "./pages/_HomeNavigator";
 import _input from "./pages/_input";
+import _loginScreen from "./pages/_loginScreen";
 import _OrderItem from "./pages/_OrderItem";
 import _ProductsItem from "./pages/_ProductsItem";
 import _ProductsScreen from "./pages/_ProductsScreen";
 import _ProfileScreen from "./pages/_ProfileScreen";
+import _RegisterScreen from "./pages/_RegisterScreen";
 
 export default {
     ..._BottomTabNavigator,
@@ -32,4 +34,6 @@ export default {
     ..._AddressListScreen,
     ..._AddressItem,
     ..._CardItem,
+    ..._RegisterScreen,
+    ..._loginScreen,
 }
