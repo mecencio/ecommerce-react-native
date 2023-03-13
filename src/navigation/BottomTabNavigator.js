@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View, Text, useColorScheme } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "@expo/vector-icons/Ionicons"
 import HomeNavigator from "./HomeNavigator";
@@ -7,17 +7,21 @@ import CartNavigator from "./CartNavigator";
 import OrdersNavigator from "./OrdersNavigator";
 import ProfileNavigator from "./ProfileNavigator";
 import AddressNavigator from "./AddressNavigator";
+import colors from "../styles/constants/colors";
 
 const BottomTabs = createBottomTabNavigator();
 
-export default BottomTabNavigator = () => {
+const BottomTabNavigator = () => {
+    const colorScheme = useColorScheme();
+    const tabBar = colorScheme === "light" ? styles.tabBar : styles.tabBarDark;
+
     return (
         <BottomTabs.Navigator
-            initialRouteName="Home"
+            initialRouteName="HomeTab"
             screenOptions={{
                 headerShown: false,
                 tabBarShowLabel: false,
-                tabBarStyle: styles.tabBar,
+                tabBarStyle: tabBar,
             }}
         >
             <BottomTabs.Screen
@@ -26,10 +30,10 @@ export default BottomTabNavigator = () => {
                 options={{
                     tabBarIcon: () => (
                         <View style={styles.tabBarIcon}>
-                            <Ionicons name="home-outline" size={25} color="#c19963" />
+                            <Ionicons name="home-outline" size={25} color={colors.PRINCETON_ORANGE} />
                             <Text style={styles.tabBarText}>Home</Text>
                         </View>
-                    )
+                    ),
                 }}
             />
             <BottomTabs.Screen
@@ -71,3 +75,5 @@ export default BottomTabNavigator = () => {
         </BottomTabs.Navigator>
     )
 }
+
+export default BottomTabNavigator;

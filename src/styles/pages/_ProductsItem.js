@@ -4,43 +4,67 @@ import colors from "../constants/colors";
 export default StyleSheet.create({
     productsItem: {
         flex: 1,
-        marginBottom: 30,
-        // shadowColor: "black",
-        // shadowOpacity: 0.5,
-        // shadowOffset: { width: 0, height: 2 },
-        // shadowRadius: 5,
-        // elevation: 5,
+        marginVertical: 10,
     },
     productsItemContainer: {
         flex: 1,
-        borderWidth: 1,
-        borderRadius: 10,
-        marginHorizontal: 5,
+        flexDirection: "row",
+        borderBottomWidth: 1,
+        borderColor: colors.BLACK_TRANSPARENT,
         paddingBottom: 10,
     },
     productsImageContainer: {
-        marginBottom: 10,
+        marginHorizontal: 10,
+    },
+    productsImage: {
+        height: 130,
+        width: 130,
+        borderRadius: 20,
     },
     productsTextContainer: {
         flex: 1,
-        height: "100%",
         justifyContent: "space-between",
         alignItems: "center",
         paddingHorizontal: 5,
     },
     productsTextTitle: {
-        fontWeight: "bold",
-        color: colors.primary,
         marginVertical: 10,
     },
     productsTextPrice: {
-        fontStyle: "italic",
+        fontWeight: "bold",
+        fontSize: 18,
         marginVertical: 10,
     },
-    productsImage: {
-        height: 150,
-        width: "100%",
-        borderTopRightRadius: 8,
-        borderTopLeftRadius: 8,
+
+    //DARK
+    productsItemContainerDark: {
+        flex: 1,
+        flexDirection: "row",
+        borderBottomWidth: 1,
+        borderColor: colors.SELECTIVE_YELLOW_SEMITRANSPARENT,
+        paddingBottom: 10,
+    },
+    productsImageDark: {
+        height: 130,
+        width: 130,
+        borderRadius: 20,
+        borderColor: colors.SELECTIVE_YELLOW,
+        borderWidth: 1,
+    },
+    productsTextContainer: {
+        flex: 1,
+        justifyContent: "space-between",
+        alignItems: "center",
+        paddingHorizontal: 5,
+    },
+    productsTextTitleDark: {
+        marginVertical: 10,
+        color: colors.COCOA_BROWN,
+    },
+    productsTextPriceDark: {
+        fontWeight: "bold",
+        fontSize: 18,
+        marginVertical: 10,
+        color: colors.COCOA_BROWN,
     },
 })

@@ -14,7 +14,7 @@ const AddressNavigator = () => (
         initialRouteName="AddressList"
         screenOptions={{
             headerShadowVisible: true,
-            headerStyle: styles.HomeStyle,
+            headerStyle: styles.homeStyle,
             headerTintColor: colors.primary,
             headerTitleStyle: {
                 fontWeight: "bold",

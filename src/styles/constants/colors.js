@@ -11,6 +11,7 @@ export default {
     LIGHT_ORANGE: "#f9dbbd",
 
     //https://coolors.co/palette/cc5803-e2711d-ff9505-ffb627-ffc971
+    DARK: "#121212",
     TAWNY: "#CC5803",
     TAWNY_TRANSPARENT: "#CC580350",
     COCOA_BROWN: "#E2711D",

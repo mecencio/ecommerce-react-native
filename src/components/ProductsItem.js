@@ -1,29 +1,35 @@
 import React from "react";
-import { Image, Text, TouchableOpacity, View } from "react-native";
+import { Image, Text, TouchableOpacity, useColorScheme, View } from "react-native";
 import styles from "../styles/styles";
 
 const ProductsItem = ({ item, onSelected }) => {
-
-    function currencyFormat(num) {
-        return '$ ' + num.toFixed(2).replace((/(\d)(?=(\d{3})+(?!\d))/g, '$ 1,'))
-    }
+    const colorScheme = useColorScheme();
+    const productsItemContainer = colorScheme === "light" ? styles.productsItemContainer : styles.productsItemContainerDark;
+    const productsTextTitle = colorScheme === "light" ? styles.productsTextTitle : styles.productsTextTitleDark;
+    const productsTextPrice = colorScheme === "light" ? styles.productsTextPrice : styles.productsTextPriceDark;
+    const productsImage = colorScheme === "light" ? styles.productsImage : styles.productsImageDark;
+    const currencyFormat = amount => {
+        return "$ " + Number(amount)
+            .toFixed(2)
+            .replace(/\d(?=(\d{3})+\.)/g, '$&,');
+    };
 
     return (
         <View style={styles.productsItem}>
             <TouchableOpacity
-                style={styles.productsItemContainer}
+                style={productsItemContainer}
                 onPress={() => onSelected(item)}
             >
                 <View style={styles.productsImageContainer}>
                     <Image
-                        style={styles.productsImage}
+                        style={productsImage}
                         source={{ uri: item.img }}
                     />
                 </View>
                 <View style={styles.productsTextContainer}>
-                    <Text style={styles.productsTextTitle}>{item.name}</Text>
+                    <Text style={productsTextTitle}>{item.name}</Text>
+                    <Text style={productsTextPrice}>{item.price === null ? 0 : currencyFormat(item.price)}</Text>
                     <Text>{item.description}</Text>
-                    <Text style={styles.productsTextPrice}>{currencyFormat(item.price)}</Text>
                 </View>
             </TouchableOpacity>
         </View>

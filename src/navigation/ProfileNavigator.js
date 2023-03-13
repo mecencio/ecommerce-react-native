@@ -16,7 +16,7 @@ const ProfileNavigator = () => {
             initialRouteName="Profile"
             screenOptions={{
                 headerShadowVisible: true,
-                headerStyle: styles.indexStyle,
+                headerStyle: styles.homeStyle,
                 headerTintColor: colors.primary,
                 headerTitleStyle: {
                     fontWeight: "bold",

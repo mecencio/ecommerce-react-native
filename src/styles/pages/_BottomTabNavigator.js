@@ -4,7 +4,6 @@ import colors from "../constants/colors";
 export default StyleSheet.create({
     tabBar: {
         backgroundColor: "#fff",
-        marginBottom: 10,
         borderRadius: 50,
         marginHorizontal: 10,
         height: 55,
@@ -23,4 +22,16 @@ export default StyleSheet.create({
     tabBarText: {
         color: colors.primary
     },
+    tabBarDark: {
+        backgroundColor: colors.DARK,
+        height: 55,
+        position: "absolute",
+        shadowColor: colors.PRINCETON_ORANGE,
+        shadowOffset: { width: 0, height: 0 },
+        shadowOpacity: 0.2,
+        shadowRadius: 5,
+        elevation: 5,
+        borderTopColor: colors.PRINCETON_ORANGE,
+        borderTopWidth: 1,
+    }
 })

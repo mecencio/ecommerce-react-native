@@ -28,7 +28,7 @@ export const signup = ( email, password ) => {
                 userId: data.localId,
             })
         } catch (error) {
-            console.log(error)
+            throw error;
         }
     }
 }
@@ -56,7 +56,7 @@ export const signin = ( email, password ) => {
                 userId: data.localId,
             })
         } catch (error) {
-            console.log(error)
+            throw error;
         }
     }
 };
@@ -81,7 +81,7 @@ export const resetPassword = ( email ) => {
                 type: RESET_PASSWORD,
             });
         } catch (error) {
-            console.log(error)
+            throw error;
         }
     }
 }

@@ -1,5 +1,5 @@
 import { CATEGORIES } from "../../data/categories"
-import { SELECTED_CATEGORY } from "../actions/category.action"
+import { SELECTED_CATEGORY, MORE_CATEGORIES } from "../actions/category.action"
 
 const initialState = {
     categories: CATEGORIES,

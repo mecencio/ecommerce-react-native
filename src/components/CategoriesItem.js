@@ -1,22 +1,25 @@
 import React from "react";
-import { Text, TouchableOpacity, View, Image } from "react-native";
+import { Text, TouchableOpacity, View, Image, useColorScheme } from "react-native";
 import styles from "../styles/styles";
 
 const CategoriesItem = ({item, onSelected }) => {
+    const colorScheme = useColorScheme();
+    const categoryItemText = colorScheme === "light" ? {} : styles.categoryItemTextDark;
+
     return (
-        <View style={styles.categoryItem}>
+        <View style={{}}>
             <TouchableOpacity
                 style={styles.categoryItemContainer}
                 onPress={() => onSelected(item)}
             >
-                <View style={styles.categoryItemImageContainer}>
+                <View style={{}}>
                     <Image 
                         style={styles.categoryItemImage}
-                        source={{uri: item.img}}
+                        source={{uri: item.picture}}
                     />
                 </View>
-                <View style={styles.categoryItemTextContainer}>
-                    <Text>{item.title}</Text>
+                <View>
+                    <Text style={categoryItemText}>{item.name}</Text>
                 </View>
             </TouchableOpacity>
         </View>
