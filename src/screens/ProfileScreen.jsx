@@ -17,7 +17,7 @@ const ProfileScreen = ({ navigation }) => {
     const ProfileScreenOptions = colorScheme === 'light' ? styles.profileScreenOptions : styles.profileScreenOptionsDark;
     const ProfileScreenOptionsText = colorScheme === 'light' ? styles.profileScreenOptionsText : styles.profileScreenOptionsTextDark;
 
-    const image = useSelector(state => state.image.image)
+    const image = useSelector(state => state.auth.user.image)
 
     const handleLogout = () => {
         dispatch(logout());

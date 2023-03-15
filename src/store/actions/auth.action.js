@@ -1,4 +1,6 @@
+import { fetchUser, newUser } from "../../db";
 import { URL_AUTH_RESET_PASSWORD, URL_AUTH_SIGNIN, URL_AUTH_SIGNUP } from "../../env/database";
+import User from "../../models/User";
 
 export const SIGNUP = "SIGNUP";
 export const SIGNIN = "SIGNIN";
@@ -22,10 +24,16 @@ export const signup = ( email, password ) => {
 
             const data = await response.json();
 
+            const user = new User(data.localId, email)
+            try {
+                const result = await newUser(user);
+            } catch (error) {
+                throw error;
+            }
             dispatch({
                 type: SIGNUP,
                 token: data.idToken,
-                userId: data.localId,
+                user: user,
             })
         } catch (error) {
             throw error;
@@ -48,13 +56,28 @@ export const signin = ( email, password ) => {
                 })
             })
 
-            const data = await response.json();
+            const data = await response.json()
 
-            dispatch({
-                type: SIGNIN,
-                token: data.idToken,
-                userId: data.localId,
-            })
+            try {
+                const result = await fetchUser(data.localId);
+                const idUser = result.rows._array[0].id
+                const emailUser = result.rows._array[0].email
+                const firstnameUser = result.rows._array[0].firstname || ""
+                const lastnameUser = result.rows._array[0].lastname || ""
+                const documentUser = result.rows._array[0].document || ""
+                const phoneUser = result.rows._array[0].phone || ""
+                const imageUser = result.rows._array[0].image || ""
+
+                dispatch({
+                    type: SIGNIN,
+                    token: data.idToken,
+                    user: new User(idUser, emailUser, firstnameUser, lastnameUser, documentUser, phoneUser, imageUser),
+                })
+
+            } catch (error) {
+                throw error;
+            }
+
         } catch (error) {
             throw error;
         }

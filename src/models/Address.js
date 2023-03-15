@@ -1,7 +1,10 @@
 class Address {
-    constructor(id, title) {
-        this.id = id.toString(),
+    constructor(id, title, lat, lng, address) {
+        this.id = id.toString()
         this.title = title
+        this.lat = lat
+        this.lng = lng
+        this.address = address
     }
 }
 

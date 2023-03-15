@@ -4,11 +4,11 @@ import AuthNavigator from "./AuthNavigator";
 import { useSelector } from "react-redux";
 
 export default () => {
-    const userId = true;
+    const user = useSelector(state => state.auth.user);
 
     return (
         <>
-            {userId ? <BottomTabNavigator /> : <AuthNavigator />}
+            {user ? <BottomTabNavigator /> : <AuthNavigator />}
         </>
     )
 }
