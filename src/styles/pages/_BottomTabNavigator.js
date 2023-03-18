@@ -4,15 +4,15 @@ import colors from "../constants/colors";
 export default StyleSheet.create({
     tabBar: {
         backgroundColor: "#fff",
-        borderRadius: 50,
-        marginHorizontal: 10,
         height: 55,
         position: "absolute",
-        shadowColor: "#000",
+        shadowColor: colors.COCOA_BROWN,
         shadowOffset: { width: 0, height: 0 },
         shadowOpacity: 0.2,
         shadowRadius: 5,
         elevation: 5,
+        borderTopColor: colors.PRINCETON_ORANGE,
+        borderTopWidth: 1,
     },
     tabBarIcon: {
         flex: 1,
@@ -20,8 +20,10 @@ export default StyleSheet.create({
         alignItems: "center",
     },
     tabBarText: {
-        color: colors.primary
+        color: colors.TAWNY,
     },
+
+    //Dark
     tabBarDark: {
         backgroundColor: colors.DARK,
         height: 55,
@@ -33,5 +35,8 @@ export default StyleSheet.create({
         elevation: 5,
         borderTopColor: colors.PRINCETON_ORANGE,
         borderTopWidth: 1,
-    }
+    },
+    tabBarTextDark: {
+        color: colors.XANTHOUS,
+    },
 })

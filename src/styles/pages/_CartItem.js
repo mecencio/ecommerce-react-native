@@ -6,7 +6,7 @@ export default StyleSheet.create({
         flex: 1,
         padding: 8,
         borderBottomWidth: 1,
-        borderBottomColor: colors.primary,
+        borderBottomColor: colors.PRINCETON_ORANGE,
     },
     cartItemHeader: {
         fontSize: 18,

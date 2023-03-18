@@ -39,15 +39,4 @@ export default StyleSheet.create({
         fontSize: 16,
         color: colors.PRINCETON_ORANGE
     },
-    // categoriesScreenContainer: {
-    //     flex: 1,
-    //     backgroundColor: colors.background,
-    //     alignItems: 'center',
-    //     justifyContent: 'center',
-    // },
-    // categoriesScreenRender: {
-    //     marginTop: 15,
-    //     padding: 15,
-    //     height: 150,
-    // },
 })

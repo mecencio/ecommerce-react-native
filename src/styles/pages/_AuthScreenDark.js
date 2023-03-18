@@ -11,17 +11,17 @@ export default StyleSheet.create({
         fontSize: 24,
         marginBottom: 18,
         textAlign: "center",
-        color: colors.LIGHT_ORANGE,
+        color: colors.XANTHOUS,
     },
     authScreenContainer: {
         width: "80%",
         maxWidth: 400,
         padding: 12,
         margin: 12,
-        borderColor: colors.SALMON_PINK,
+        borderColor: colors.SELECTIVE_YELLOW,
         borderWidth: 1,
         borderRadius: 10,
-        backgroundColor: colors.CHOCOLATE_COSMOS,
+        backgroundColor: colors.TAWNY,
     },
     authScreenPrompt: {
         alignItems: "center",
@@ -34,7 +34,7 @@ export default StyleSheet.create({
         fontSize: 16,
     },
     authScreenButton: {
-        backgroundColor: colors.CHOCOLATE_COSMOS,
+        backgroundColor: colors.TAWNY,
         marginVertical: 20,
     },
 })

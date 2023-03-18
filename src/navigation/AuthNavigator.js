@@ -3,10 +3,14 @@ import AuthScreen from "../screens/Auth/AuthScreen";
 import colors from "../styles/constants/colors";
 import LoginScreen from "../screens/Auth/LoginScreen";
 import RegisterScreen from "../screens/Auth/RegisterScreen";
+import { useColorScheme } from "react-native";
 
 const Stack = createNativeStackNavigator();
 
 const AuthNavigator = () => {
+    const colorScheme = useColorScheme();;
+    const IconColor = colorScheme === "light" ? colors.DARK : colors.PRINCETON_ORANGE;
+
     return (
         <Stack.Navigator
             initialRouteName="Auth"
@@ -27,7 +31,7 @@ const AuthNavigator = () => {
                 options={{
                     headerShown: true,
                     headerTransparent: true,
-                    headerTintColor: colors.SELECTIVE_YELLOW,
+                    headerTintColor: IconColor,
                     headerTitleStyle: {
                         color: "#FFFFFF00"
                     }
@@ -39,7 +43,7 @@ const AuthNavigator = () => {
                 options={{
                     headerShown: true,
                     headerTransparent: true,
-                    headerTintColor: colors.SELECTIVE_YELLOW,
+                    headerTintColor: IconColor,
                     headerTitleStyle: {
                         color: "#FFFFFF00"
                     }

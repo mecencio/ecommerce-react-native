@@ -10,10 +10,12 @@ export const selectedProduct = (id) => ({
     productId: id,
 });
 
-export const showLoader = () => (dispatch) => {
-    dispatch({
-        type: SHOW_LOADER,
-    })
+export const showLoader = () => {
+    return async dispatch => {
+        dispatch({
+            type: SHOW_LOADER,
+        })
+    }
 }
 
 export const hideLoader = () => (dispatch) => {
@@ -25,14 +27,13 @@ export const hideLoader = () => (dispatch) => {
 export const filteredProduct = (categoryId, offset, selectedSort) => {
     return async dispatch => {
         try {
-            showLoader();
-            console.log(URL_API_ML+`category=${categoryId}&limit=50&offset${offset}&sort=${selectedSort}`)
-            const data = await fetch(URL_API_ML+`category=${categoryId}&limit=50&offset${offset}&sort=${selectedSort}`)
-                        .then(response => {return response.json()});
+            dispatch({ type: SHOW_LOADER })
+            let data = await fetch(URL_API_ML + `category=${categoryId}&limit=50&offset=${offset}&sort=${selectedSort}`)
+                .then(response => { return response.json() });
             const max = data.paging.total;
-            const result = data.results.map((item) => {
+            let result = data.results.map((item) => {
                 const arr = item.thumbnail.split("");
-                arr.splice(-5,1,"F");
+                arr.splice(-5, 1, "F");
                 return {
                     id: item.id,
                     category: categoryId,
@@ -43,14 +44,12 @@ export const filteredProduct = (categoryId, offset, selectedSort) => {
                 }
             })
 
-            setTimeout(() => {
-                dispatch({
-                    type: FILTERED_PRODUCT,
-                    products: [...result],
-                    totalProducts: max,
-                    loading: false,
-                })
-            }, 1000);
+            dispatch({
+                type: FILTERED_PRODUCT,
+                products: [...result],
+                totalProducts: max,
+                loading: false,
+            })
         } catch (error) {
             throw error;
         }

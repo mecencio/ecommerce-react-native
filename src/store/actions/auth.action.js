@@ -1,6 +1,7 @@
 import { fetchUser, newUser } from "../../db";
 import { URL_AUTH_RESET_PASSWORD, URL_AUTH_SIGNIN, URL_AUTH_SIGNUP } from "../../env/database";
 import User from "../../models/User";
+import * as SecureStore from 'expo-secure-store';
 
 export const SIGNUP = "SIGNUP";
 export const SIGNIN = "SIGNIN";
@@ -26,6 +27,8 @@ export const signup = ( email, password ) => {
 
             const user = new User(data.localId, email)
             try {
+                SecureStore.setItemAsync("userId", data.localId)
+                SecureStore.setItemAsync("idToken", data.idToken)
                 const result = await newUser(user);
             } catch (error) {
                 throw error;
@@ -59,6 +62,8 @@ export const signin = ( email, password ) => {
             const data = await response.json()
 
             try {
+                SecureStore.setItemAsync("userId", data.localId);
+                SecureStore.setItemAsync("idToken", data.idToken)
                 const result = await fetchUser(data.localId);
                 const idUser = result.rows._array[0].id
                 const emailUser = result.rows._array[0].email
@@ -109,6 +114,39 @@ export const resetPassword = ( email ) => {
     }
 }
 
-export const logout = () => ({
-        type: LOGOUT,
-});
+export const logout = () => {
+    return async dispatch => {
+        SecureStore.deleteItemAsync("userId");
+        SecureStore.deleteItemAsync("idToken");
+
+        dispatch({
+            type: LOGOUT
+        })
+    }
+}
+
+export const loadUser = (userId) => {
+    return async dispatch => {
+        try {
+            const idToken = await SecureStore.getItemAsync("idToken")
+            if (userId) {
+                const resultUser = await fetchUser(userId);
+                const idUser = resultUser.rows._array[0].id
+                const emailUser = resultUser.rows._array[0].email
+                const firstnameUser = resultUser.rows._array[0].firstname || ""
+                const lastnameUser = resultUser.rows._array[0].lastname || ""
+                const documentUser = resultUser.rows._array[0].document || ""
+                const phoneUser = resultUser.rows._array[0].phone || ""
+                const imageUser = resultUser.rows._array[0].image || ""
+
+                dispatch({
+                    type: SIGNIN,
+                    token: idToken,
+                    user: new User(idUser, emailUser, firstnameUser, lastnameUser, documentUser, phoneUser, imageUser),
+                })
+            }
+        } catch (error) {
+            throw error;
+        }
+    }
+};

@@ -6,6 +6,11 @@ export default StyleSheet.create({
         flex: 1,
         marginBottom: 50,
     },
+    productsScreenSpinner: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+    },
     productsScreenSortContainer: {
         paddingVertical: 8,
         flexDirection: "row",

@@ -6,7 +6,6 @@ import styles from "../styles/styles";
 import CartNavigator from "./CartNavigator";
 import OrdersNavigator from "./OrdersNavigator";
 import ProfileNavigator from "./ProfileNavigator";
-import AddressNavigator from "./AddressNavigator";
 import colors from "../styles/constants/colors";
 
 const BottomTabs = createBottomTabNavigator();
@@ -14,6 +13,8 @@ const BottomTabs = createBottomTabNavigator();
 const BottomTabNavigator = () => {
     const colorScheme = useColorScheme();
     const tabBar = colorScheme === "light" ? styles.tabBar : styles.tabBarDark;
+    const tabBarText = colorScheme === "light" ? styles.tabBarText : styles.tabBarTextDark;
+    const iconColor = colorScheme === "light" ? colors.TAWNY : colors.XANTHOUS;
 
     return (
         <BottomTabs.Navigator
@@ -30,8 +31,8 @@ const BottomTabNavigator = () => {
                 options={{
                     tabBarIcon: () => (
                         <View style={styles.tabBarIcon}>
-                            <Ionicons name="home-outline" size={25} color={colors.PRINCETON_ORANGE} />
-                            <Text style={styles.tabBarText}>Home</Text>
+                            <Ionicons name="home-outline" size={25} color={iconColor} />
+                            <Text style={tabBarText}>Home</Text>
                         </View>
                     ),
                 }}
@@ -42,8 +43,8 @@ const BottomTabNavigator = () => {
                 options={{
                     tabBarIcon: () => (
                         <View style={styles.tabBarIcon}>
-                            <Ionicons name="cart-outline" size={25} color="#c19963" />
-                            <Text style={styles.tabBarText}>Cart</Text>
+                            <Ionicons name="cart-outline" size={25} color={iconColor} />
+                            <Text style={tabBarText}>Cart</Text>
                         </View>
                     )
                 }}
@@ -54,8 +55,8 @@ const BottomTabNavigator = () => {
                 options={{
                     tabBarIcon: () => (
                         <View style={styles.tabBarIcon}>
-                            <Ionicons name="albums-outline" size={25} color="#c19963" />
-                            <Text style={styles.tabBarText}>Orders</Text>
+                            <Ionicons name="albums-outline" size={25} color={iconColor} />
+                            <Text style={tabBarText}>Orders</Text>
                         </View>
                     )
                 }}
@@ -66,8 +67,8 @@ const BottomTabNavigator = () => {
                 options={{
                     tabBarIcon: () => (
                         <View style={styles.tabBarIcon}>
-                            <Ionicons name="person-circle-outline" size={25} color="#c19963" />
-                            <Text style={styles.tabBarText}>Profile</Text>
+                            <Ionicons name="person-circle-outline" size={25} color={iconColor} />
+                            <Text style={tabBarText}>Profile</Text>
                         </View>
                     )
                 }}

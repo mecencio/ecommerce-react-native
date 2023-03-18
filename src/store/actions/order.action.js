@@ -18,7 +18,7 @@ export const getOrders = () => {
             }))
             dispatch({ type: GET_ORDERS, orders: orders});
         } catch (error) {
-            console.log(error)
+            throw error
         }
     }
 }

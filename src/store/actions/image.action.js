@@ -15,7 +15,6 @@ export const addImage = ( userId, image ) => {
             })
             const result = await changeImage(userId, Path)
         } catch (error) {
-            console.log(error.message);
             throw error;
         }
 

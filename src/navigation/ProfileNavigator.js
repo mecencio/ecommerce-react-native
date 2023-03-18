@@ -1,5 +1,5 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { TouchableOpacity } from "react-native";
+import { TouchableOpacity, useColorScheme } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import ProfileScreen from "../screens/ProfileScreen";
 import styles from "../styles/styles";
@@ -11,16 +11,16 @@ import NewImageScreen from "../screens/NewImageScreen";
 const Stack = createNativeStackNavigator();
 
 const ProfileNavigator = () => {
+    const colorScheme = useColorScheme();
+    const homeStyle = colorScheme === "light" ? styles.homeStyle : styles.homeStyleDark;
+    const IconColor = colorScheme === "light" ? colors.DARK : colors.PRINCETON_ORANGE;
+
     return (
         <Stack.Navigator
             initialRouteName="Profile"
             screenOptions={{
-                headerShadowVisible: true,
-                headerStyle: styles.homeStyle,
-                headerTintColor: colors.primary,
-                headerTitleStyle: {
-                    fontWeight: "bold",
-                },
+                headerShadowVisible: false,
+                headerStyle: homeStyle,
                 headerTitleAlign: "center",
             }}
         >
@@ -28,7 +28,8 @@ const ProfileNavigator = () => {
                 name="Profile"
                 component={ProfileScreen}
                 options={{
-                    title: "Profile"
+                    title: "",
+                    headerTintColor: IconColor,
                 }}
             />
             <Stack.Screen
@@ -36,6 +37,7 @@ const ProfileNavigator = () => {
                 component={AddressNavigator}
                 options={{
                     headerShown: false,
+                    headerTintColor: IconColor,
                 }}
             />
             <Stack.Screen
@@ -43,11 +45,16 @@ const ProfileNavigator = () => {
                 component={CardNavigator}
                 options={{
                     headerShown: false,
+                    headerTintColor: IconColor,
                 }}
             />
             <Stack.Screen
-            name="NewImage"
-            component={NewImageScreen}
+                name="NewImage"
+                component={NewImageScreen}
+                options={{
+                    title: "",
+                    headerTintColor: IconColor,
+                }}
             />
         </Stack.Navigator>
     )

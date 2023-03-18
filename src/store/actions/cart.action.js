@@ -40,7 +40,7 @@ export const confirmCart = (items, total) => {
                 confirm: true,
             })
         } catch (error) {
-            console.log(error)
+            throw error
         }
     }
 };

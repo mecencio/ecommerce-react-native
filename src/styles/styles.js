@@ -9,8 +9,12 @@ import _CategoriesItem from "./pages/_CategoriesItem";
 import _CategoriesScreen from "./pages/_CategoriesScreen";
 import _DetailScreen from "./pages/_DetailScreen";
 import _HomeNavigator from "./pages/_HomeNavigator";
+import _ImageSelector from "./pages/_ImageSelector";
 import _input from "./pages/_input";
 import _loginScreen from "./pages/_loginScreen";
+import _MapPreview from "./pages/_MapPreview";
+import _NewAddressScreen from "./pages/_NewAddressScreen";
+import _NewImageScreen from "./pages/_NewImageScreen";
 import _OrderItem from "./pages/_OrderItem";
 import _ProductsItem from "./pages/_ProductsItem";
 import _ProductsScreen from "./pages/_ProductsScreen";
@@ -36,4 +40,8 @@ export default {
     ..._CardItem,
     ..._RegisterScreen,
     ..._loginScreen,
+    ..._NewAddressScreen,
+    ..._MapPreview,
+    ..._ImageSelector,
+    ..._NewImageScreen,
 }

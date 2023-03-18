@@ -19,7 +19,7 @@ const NewCardScreen = ({ navigation }) => {
             <View>
                 <Text>Card</Text>
                 <TextInput />
-                <Button title="add" color={colors.RASPBERRY_ROSE} onPress={() => console.log("Agregar tarjeta")} />
+                <Button title="add" color={colors.COCOA_BROWN} onPress={() => console.log("Agregar tarjeta")} />
             </View>
         </ScrollView>
     )

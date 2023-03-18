@@ -1,12 +1,10 @@
-import { PRODUCTS } from "../../data/products";
 import { SELECTED_PRODUCT, FILTERED_PRODUCT, SHOW_LOADER, HIDE_LOADER } from "../actions/products.action";
 
 const initialState = {
-    products: PRODUCTS,
     filteredProduct: [],
-    loading: true,
     selected: null,
     totalProducts: 0,
+    loading: false,
 };
 
 const ProductReducer = (state = initialState, action) => {
@@ -19,19 +17,14 @@ const ProductReducer = (state = initialState, action) => {
         case FILTERED_PRODUCT:
             return {
                 ...state,
-                filteredProduct: [...action.products],
+                filteredProduct: action.products,
                 totalProducts: action.totalProducts,
-                loading: action.loading,
+                loading: action.loading
             }
         case SHOW_LOADER:
             return {
                 ...state,
                 loading: true,
-            }
-        case HIDE_LOADER:
-            return {
-                ...state,
-                loading: false,
             }
         default:
             return state;

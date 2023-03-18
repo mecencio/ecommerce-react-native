@@ -5,7 +5,7 @@ export default StyleSheet.create({
     cartScreenContainer: {
         flex: 1,
         padding: 12,
-        backgroundColor: colors.background,
+        backgroundColor: colors.DARK,
         paddingBottom: 120,
     },
     cartScreenList: {

@@ -13,7 +13,7 @@ const Stack = createNativeStackNavigator();
 export default HomeNavigator = () => {
     const colorScheme = useColorScheme();
     const homeStyle = colorScheme === "light" ? styles.homeStyle : styles.homeStyleDark;
-    const IconColor = colorScheme === "light" ? colors.CHOCOLATE_COSMOS : colors.PRINCETON_ORANGE;
+    const IconColor = colorScheme === "light" ? colors.DARK : colors.PRINCETON_ORANGE;
     const [text, setText] = useState("");
     const [touched, setTouched] = useState(false);
 
@@ -43,7 +43,7 @@ export default HomeNavigator = () => {
                             <Ionicons
                                 name="cart-outline"
                                 color={IconColor}
-                                size={24}
+                                size={25}
                             />
                         </TouchableOpacity>
                     </View>
@@ -55,20 +55,23 @@ export default HomeNavigator = () => {
                 component={CategoriesScreen}
                 options={{
                     title: "",
+                    headerTintColor: IconColor,
                 }}
             />
             <Stack.Screen
                 name="Products"
                 component={ProductsScreen}
                 options={{
-                    title: ""
+                    title: "",
+                    headerTintColor: IconColor,
                 }}
             />
             <Stack.Screen
                 name="Details"
                 component={DetailsScreen}
                 options={({ route }) => ({
-                    title: route.params.name
+                    title: route.params.name,
+                    headerTintColor: IconColor,
                 })}
             />
         </Stack.Navigator>

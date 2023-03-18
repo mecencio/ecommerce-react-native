@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { FlatList, View, TouchableOpacity, Text, useColorScheme } from "react-native";
+import { ActivityIndicator, FlatList, View, TouchableOpacity, Text, useColorScheme } from "react-native";
 import ProductsItem from "../components/ProductsItem";
 import { useSelector, useDispatch } from "react-redux";
 import { selectedProduct, filteredProduct, setOrder } from "../store/actions/products.action";
 import styles from "../styles/styles";
+import colors from "../styles/constants/colors";
 
 const ProductsScreen = ({ navigation }) => {
     const colorScheme = useColorScheme();
@@ -30,24 +31,19 @@ const ProductsScreen = ({ navigation }) => {
 
     const handleSelectedProduct = (item) => {
         dispatch(selectedProduct(item.id));
-        navigation.navigate("Details", {
-            name: item.name
-        })
+        // navigation.navigate("Details", {
+        //     name: item.name
+        // })
     }
 
     const renderProductItem = ({ item }) => (
         <ProductsItem item={item} onSelected={handleSelectedProduct} />
     );
 
-    useEffect(() => {
-        console.log(loading)
-    }, [loading])
-    
-
     if (loading === true) {
         return (
-            <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-                <Text>Loading...</Text>
+            <View style={styles.productsScreenSpinner}>
+                <ActivityIndicator size="large" color={colors.PRINCETON_ORANGE} />
             </View>
         )
     } else {

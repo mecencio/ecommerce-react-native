@@ -1,20 +1,11 @@
-//https://coolors.co/f9dbbd-ffa5ab-da627d-a53860-450920
+//https://coolors.co/palette/cc5803-e2711d-ff9505-ffb627-ffc971
 
 export default {
-    background: "#faf7f4",
-    primary: "#c19963",
-    CHOCOLATE_COSMOS: "#450920",
-    CHOCOLATE_COSMOS_TRANSPARENT: "#45092040",
-    RASPBERRY_ROSE: "#a53860",
-    BLUSH: "#da627d",
-    SALMON_PINK: "#ffa5ab",
-    LIGHT_ORANGE: "#f9dbbd",
-
-    //https://coolors.co/palette/cc5803-e2711d-ff9505-ffb627-ffc971
     DARK: "#121212",
     TAWNY: "#CC5803",
     TAWNY_TRANSPARENT: "#CC580350",
     COCOA_BROWN: "#E2711D",
+    COCOA_BROWN_TRANSPARENT: "#E2711D50",
     PRINCETON_ORANGE: "#FF9505",
     SELECTIVE_YELLOW: "#FFB627",
     SELECTIVE_YELLOW_SEMITRANSPARENT: "#FFB627A0",
