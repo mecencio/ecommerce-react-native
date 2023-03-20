@@ -28,6 +28,12 @@ export const init = () => {
                     reject(err)
                 }
             );
+            tx.executeSql(
+                "CREATE TABLE IF NOT EXISTS cards (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, number TEXT NOT NULL, month TEXT NOT NULL, year TEXT NOT NULL, cod TEXT NOT NULL, cardholderName TEXT NOT NULL, cardholderId TEXT NOT NULL, userId INTEGER NOT NULL);",
+                [],
+                () => resolve(),
+                (_, err) => reject(err)
+            );
         })
     })
     return promise;
@@ -115,7 +121,6 @@ export const changeAddress = (addressId, street, number, floor, city, province, 
                 "UPDATE address SET street=(?), number=(?), floor=(?), city=(?), province=(?), country=(?), information=(?), lat=(?), lng=(?) WHERE id = (?);",
                 [street, number, floor, city, province, country, information, lat, lng, addressId],
                 (_, result) => {
-                    console.log(addressId)
                     resolve(result)
                 },
                 (_, error) => reject(error),
@@ -132,6 +137,54 @@ export const removeAddress = (addressId) => {
             tx.executeSql(
                 "DELETE FROM address WHERE id =(?);",
                 [addressId],
+                (_, result) => resolve(result),
+                (_, err) => reject(err),
+            )
+        })
+    })
+    return promise;
+}
+
+export const insertCard = (number, month, year, cod, cardholderName, cardholderId, userId) => {
+    const promise = new Promise((resolve, reject) => {
+        db.transaction(tx => {
+            tx.executeSql(
+                "INSERT INTO cards (number, month, year, cod, cardholderName, cardholderId, userId) VALUES (?, ?, ?, ?, ?, ?, ?);",
+                [number, month, year, cod, cardholderName, cardholderId, userId],
+                (_, result) => resolve(result),
+                (_, error) => reject(error),
+            )
+        })
+    })
+    return promise;
+}
+
+export const loadCard = (userId) => {
+    if (!userId) return
+    const promise = new Promise((resolve, reject) => {
+        db.transaction(tx => {
+            tx.executeSql(
+                "SELECT * FROM cards WHERE userId = (?);",
+                [userId],
+                (_, result) => {
+                    resolve(result)
+                },
+                (_, err) => {
+                    reject(err)
+                },
+            )
+        })
+    })
+    return promise;
+}
+
+export const removeCard = (cardId) => {
+    if (!cardId) return
+    const promise = new Promise((resolve, reject) => {
+        db.transaction(tx => {
+            tx.executeSql(
+                "DELETE FROM cards WHERE id =(?);",
+                [cardId],
                 (_, result) => resolve(result),
                 (_, err) => reject(err),
             )

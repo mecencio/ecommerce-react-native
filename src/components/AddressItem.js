@@ -5,7 +5,7 @@ import styles from "../styles/styles";
 
 const AddressItem = ({ item, onDelete, navigation }) => {
     const colorScheme = useColorScheme();
-    const AddressItem = colorScheme === "light" ? styles.AddressItem : styles.AddressItemDark;
+    const AddressItem = colorScheme === "light" ? styles.addressItem : styles.addressItemDark;
 
     return (
         <View style={AddressItem} >
@@ -14,10 +14,10 @@ const AddressItem = ({ item, onDelete, navigation }) => {
                 <Text>{item.city} - {item.province}</Text>
             </View>
             <View>
-                <TouchableOpacity onPress={() => navigation.navigate("Change Address", {item})} style={styles.AddressItemOptionEdit} >
+                <TouchableOpacity onPress={() => navigation.navigate("Change Address", {item})} style={styles.addressItemOptionEdit} >
                     <Ionicons name="pencil-outline" size={16} />
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => onDelete(item.id)} style={styles.AddressItemOptionDelete} >
+                <TouchableOpacity onPress={() => onDelete(item.id)} style={styles.addressItemOptionDelete} >
                     <Ionicons name="md-trash" color="red" size={16} />
                 </TouchableOpacity>
             </View>

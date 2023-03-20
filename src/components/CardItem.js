@@ -1,18 +1,26 @@
 import React from "react";
-import { Text, View, TouchableOpacity } from "react-native";
+import { Text, View, TouchableOpacity, useColorScheme } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import styles from "../styles/styles";
+import colors from "../styles/constants/colors";
 
 const CardItem = ({ item }) => {
+    const colorScheme = useColorScheme();
+    const cardItem = colorScheme === "light" ? styles.cardItem : styles.cardItemDark;
+    const cardItemIcon = colorScheme === "light" ? styles.cardItemIcon : styles.cardItemIconDark;
+
     return (
-        <View style={styles.CardItem}>
+        <View style={cardItem}>
+            <View style={styles.cardItemContainer}>
+            <Ionicons name="card-outline" size={24} style={cardItemIcon}/>
             <View>
-                <Text>Card **** **** number</Text>
-                <Text>Month / Year</Text>
+                <Text>**** **** **** {item.number.substr(-4)}</Text>
+                <Text>{item.month} / {item.year}</Text>
+            </View>
             </View>
             <View>
-                <TouchableOpacity>
-                    <Ionicons name="md-trash" color={"red"} size={16} />
+                <TouchableOpacity onPress={() => onDelete(item.id)} style={styles.cardItemOptionDelete} >
+                    <Ionicons name="md-trash" color="red" size={16} />
                 </TouchableOpacity>
             </View>
         </View>

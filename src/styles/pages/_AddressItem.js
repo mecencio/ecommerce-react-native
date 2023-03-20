@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 import colors from "../constants/colors";
 
 export default StyleSheet.create({
-    AddressItem: {
+    addressItem: {
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
@@ -14,15 +14,15 @@ export default StyleSheet.create({
         borderRadius: 6,
         backgroundColor: colors.XANTHOUS_TRANSPARENT
     },
-    AddressItemOptionEdit: {
+    addressItemOptionEdit: {
         paddingVertical: 4,
     },
-    AddressItemOptionDelete: {
+    addressItemOptionDelete: {
         paddingVertical: 4,
     },
 
     //DARK
-    AddressItemDark: {
+    addressItemDark: {
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",

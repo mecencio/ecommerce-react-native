@@ -6,7 +6,7 @@ import * as Location from 'expo-location';
 import Ionicons from "@expo/vector-icons/Ionicons";
 import colors from "../styles/constants/colors";
 import styles from "../styles/styles";
-import NewAddressInput from "../components/NewAddressInput";
+import GenericInput from "../components/GenericInput";
 import MapPreview from "../components/MapPreview";
 import Address from "../models/Address";
 
@@ -102,13 +102,13 @@ const ChangeAddressScreen = ({ navigation, route }) => {
                         <Button title="Current location" color={colors.COCOA_BROWN} onPress={handleGetLocation} />
                         <Button title="Select location" color={colors.COCOA_BROWN} onPress={handlePickOnMap} />
                     </View>
-                    <NewAddressInput label="Street * :" value={item.street} onInputChange={(text) => handleInputChange({ street: text })} />
-                    <NewAddressInput label="Number * :" value={item.number} onInputChange={(text) => handleInputChange({ number: text })} />
-                    <NewAddressInput label="Floor / Apartment :" value={item.floor} onInputChange={(text) => handleInputChange({ floor: text })} />
-                    <NewAddressInput label="City * :" value={item.city} onInputChange={(text) => handleInputChange({ city: text })} />
-                    <NewAddressInput label="Province * :" value={item.province} onInputChange={(text) => handleInputChange({ province: text })} />
-                    <NewAddressInput label="Country * :" value={item.country} onInputChange={(text) => handleInputChange({ country: text })} />
-                    <NewAddressInput label="Additional Information :" value={item.additionalInformation} onInputChange={(text) => handleInputChange({ additionalInformation: text })} />
+                    <GenericInput label="Street * :" value={item.street} onInputChange={(text) => handleInputChange({ street: text })} />
+                    <GenericInput label="Number * :" value={item.number} onInputChange={(text) => handleInputChange({ number: text })} />
+                    <GenericInput label="Floor / Apartment :" value={item.floor} onInputChange={(text) => handleInputChange({ floor: text })} />
+                    <GenericInput label="City * :" value={item.city} onInputChange={(text) => handleInputChange({ city: text })} />
+                    <GenericInput label="Province * :" value={item.province} onInputChange={(text) => handleInputChange({ province: text })} />
+                    <GenericInput label="Country * :" value={item.country} onInputChange={(text) => handleInputChange({ country: text })} />
+                    <GenericInput label="Additional Information :" value={item.additionalInformation} onInputChange={(text) => handleInputChange({ additionalInformation: text })} />
                 </View>
                 :
                 <View style={styles.NewAddressScreenContainer}>

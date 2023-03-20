@@ -6,13 +6,13 @@ import * as Location from 'expo-location';
 import Ionicons from "@expo/vector-icons/Ionicons";
 import colors from "../styles/constants/colors";
 import styles from "../styles/styles";
-import NewAddressInput from "../components/NewAddressInput";
+import GenericInput from "../components/GenericInput";
 import MapPreview from "../components/MapPreview";
 
 const NewAddressScreen = ({ navigation, route }) => {
     const colorScheme = useColorScheme();
     const NewAddressScreen = colorScheme === "light" ? styles.NewAddressScreen : styles.NewAddressScreenDark;
-    const IconColor = colorScheme === "light" ? colors.TAWNY : colors.PRINCETON_ORANGE;
+    const IconColor = colorScheme === "light" ? colors.DARK : colors.PRINCETON_ORANGE;
 
     const [selectLocation, setSelectLocation] = useState(false);
     const [address, setAddress] = useState();
@@ -91,13 +91,13 @@ const NewAddressScreen = ({ navigation, route }) => {
                         <Button title="Current location" color={colors.COCOA_BROWN} onPress={handleGetLocation} />
                         <Button title="Select location" color={colors.COCOA_BROWN} onPress={handlePickOnMap} />
                     </View>
-                    <NewAddressInput label="Street * :" onInputChange={(text) => handleInputChange({ street: text })} />
-                    <NewAddressInput label="Number * :" onInputChange={(text) => handleInputChange({ number: text })} />
-                    <NewAddressInput label="Floor / Apartment :" onInputChange={(text) => handleInputChange({ floor: text })} />
-                    <NewAddressInput label="City * :" onInputChange={(text) => handleInputChange({ city: text })} />
-                    <NewAddressInput label="Province * :" onInputChange={(text) => handleInputChange({ province: text })} />
-                    <NewAddressInput label="Country * :" onInputChange={(text) => handleInputChange({ country: text })} />
-                    <NewAddressInput label="Additional Information :" onInputChange={(text) => handleInputChange({ additionalInformation: text })} />
+                    <GenericInput label="Street * :" onInputChange={(text) => handleInputChange({ street: text })} />
+                    <GenericInput label="Number * :" onInputChange={(text) => handleInputChange({ number: text })} />
+                    <GenericInput label="Floor / Apartment :" onInputChange={(text) => handleInputChange({ floor: text })} />
+                    <GenericInput label="City * :" onInputChange={(text) => handleInputChange({ city: text })} />
+                    <GenericInput label="Province * :" onInputChange={(text) => handleInputChange({ province: text })} />
+                    <GenericInput label="Country * :" onInputChange={(text) => handleInputChange({ country: text })} />
+                    <GenericInput label="Additional Information :" onInputChange={(text) => handleInputChange({ additionalInformation: text })} />
                 </View>
                 :
                 <View style={styles.NewAddressScreenContainer}>

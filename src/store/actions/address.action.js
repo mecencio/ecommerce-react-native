@@ -86,7 +86,6 @@ export const updateAddress = (address) => {
         const lat = data.results[0].geometry.location.lat;
         const lng = data.results[0].geometry.location.lng;
 
-        console.log(address)
         const result = await changeAddress(address.id, address.street, address.number, address.floor, address.city, address.province, address.country, address.information, lat, lng);
         if (!result) {
             throw new Error("Something went wrong")

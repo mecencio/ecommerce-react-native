@@ -1,4 +1,4 @@
-import { ADD_CARD, GET_CARDS } from "../actions/card.action";
+import { ADD_CARD, DELETE_CARD, GET_CARDS } from "../actions/card.action";
 import Card from "../../models/Card";
 
 const initialState = {
@@ -8,10 +8,20 @@ const initialState = {
 const CardReducer = ( state = initialState, action) => {
     switch (action.type) {
         case ADD_CARD:
-            const newCard = new Card ({...action.payload});
-            return { ...state, cards: [...state.cards, newCard] }
+            return { 
+                ...state, 
+                addresses: [...state.cards, action.payload] 
+            }
         case GET_CARDS:
-            return state;
+            return {
+                ...state,
+                addresses: [...action.payload.cards]
+            }
+        case DELETE_CARD:
+            return {
+                ...state,
+                addresses: state.cards.filter(item => item.id !== action.payload.addressId),
+            }
         default:
             return state;
     }
