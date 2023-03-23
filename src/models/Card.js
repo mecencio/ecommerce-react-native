@@ -1,5 +1,6 @@
 class Card {
-    constructor ( number, month, year, cod, cardholderName, cardholderId ) {
+    constructor ( id, number, month, year, cod, cardholderName, cardholderId ) {
+        this.id = id,
         this.number = number,
         this.month = month,
         this.year = year,

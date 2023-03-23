@@ -1,5 +1,4 @@
 import { ADD_ADDRESS, ADD_ADDRESS_BY_COORDS, DELETE_ADDRESS, GET_ADDRESSES, UPDATE_ADDRESS, UPDATE_ADDRESS_BY_COORDS } from "../actions/address.action";
-import Address from "../../models/Address";
 
 const initialState = {
     addresses: [],

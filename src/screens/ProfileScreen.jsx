@@ -55,10 +55,6 @@ const ProfileScreen = ({ navigation }) => {
                     <Ionicons name="location-outline" size={24} color={iconColor} />
                     <Text style={ProfileScreenOptionsText}>Mis Direcciones</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => console.log("Comunicaciones")} style={ProfileScreenOptions}>
-                    <Ionicons name="chatbubble-ellipses-outline" size={24} color={iconColor} />
-                    <Text style={ProfileScreenOptionsText}>Comunicaciones</Text>
-                </TouchableOpacity>
                 <TouchableOpacity onPress={handleLogout} style={ProfileScreenOptions}>
                     <Ionicons name="log-out-outline" size={24} color={iconColor} />
                     <Text style={ProfileScreenOptionsText}>Cerrar sesión</Text>

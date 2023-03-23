@@ -4,7 +4,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import styles from "../styles/styles";
 import colors from "../styles/constants/colors";
 
-const CardItem = ({ item }) => {
+const CardItem = ({ item, onDelete }) => {
     const colorScheme = useColorScheme();
     const cardItem = colorScheme === "light" ? styles.cardItem : styles.cardItemDark;
     const cardItemIcon = colorScheme === "light" ? styles.cardItemIcon : styles.cardItemIconDark;
@@ -15,7 +15,7 @@ const CardItem = ({ item }) => {
             <Ionicons name="card-outline" size={24} style={cardItemIcon}/>
             <View>
                 <Text>**** **** **** {item.number.substr(-4)}</Text>
-                <Text>{item.month} / {item.year}</Text>
+                <Text>Expiration date:  {item.month} / {item.year}</Text>
             </View>
             </View>
             <View>

@@ -6,6 +6,7 @@ import styles from "../styles/styles";
 import colors from "../styles/constants/colors";
 import NewCardScreen from "../screens/NewCardScreen";
 import CardListScreen from "../screens/CardListScreen";
+import { useSelector } from "react-redux";
 
 const Stack = createNativeStackNavigator();
 
@@ -13,6 +14,8 @@ const CardNavigator = () => {
     const colorScheme = useColorScheme();
     const homeStyle = colorScheme === "light" ? styles.homeStyle : styles.homeStyleDark;
     const IconColor = colorScheme === "light" ? colors.DARK : colors.PRINCETON_ORANGE;
+    const user = useSelector(state => state.auth.user);
+
 
     return (
         <Stack.Navigator
@@ -26,6 +29,7 @@ const CardNavigator = () => {
             <Stack.Screen
                 name="CardList"
                 component={CardListScreen}
+                initialParams={{userId : user.id}}
                 options={({ navigation }) => ({
                     title: "",
                     headerTintColor: IconColor,
@@ -42,6 +46,7 @@ const CardNavigator = () => {
             />
             <Stack.Screen
                 name="New Card"
+                initialParams={{ userId: user.id }}
                 component={NewCardScreen}
                 options={{
                     title: "",

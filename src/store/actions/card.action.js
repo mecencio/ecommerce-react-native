@@ -1,4 +1,4 @@
-import { insertCard, loadCard } from "../../db";
+import { insertCard, loadCard, removeCard } from "../../db";
 import Card from "../../models/Card";
 
 export const ADD_CARD = "ADD_CARD";
@@ -14,7 +14,7 @@ export const addCard = (card) => {
     }
 }
 
-export const getAddresses = (userId) => {
+export const getCards = (userId) => {
     return async dispatch => {
         try {
             const result = await loadCard(userId);
@@ -26,9 +26,9 @@ export const getAddresses = (userId) => {
     }
 }
 
-export const deleteAddress = (cardId) => {
+export const deleteCard = (cardId) => {
     return async dispatch => {
-        await removeAddress(cardId);
+        await removeCard(cardId)
         dispatch({type: DELETE_CARD, payload: {cardId: cardId}})
     }
 }

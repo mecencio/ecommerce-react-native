@@ -1,21 +1,21 @@
 import React, { useEffect, useLayoutEffect, useState } from "react";
-import { View, ScrollView, TouchableOpacity, useColorScheme } from "react-native";
+import { View, Text, ScrollView, TouchableOpacity, useColorScheme } from "react-native";
 import { addCard } from "../store/actions/card.action";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import Ionicons from "@expo/vector-icons/Ionicons"
 import colors from "../styles/constants/colors";
 import styles from "../styles/styles";
 import GenericInput from "../components/GenericInput";
 
-const NewCardScreen = ({ navigation }) => {
+const NewCardScreen = ({ navigation, route }) => {
     const colorScheme = useColorScheme();
     const newCardScreen = colorScheme === "light" ? styles.newCardScreen : styles.newCardScreenDark;
     const IconColor = colorScheme === "light" ? colors.DARK : colors.PRINCETON_ORANGE;
-    const user = useSelector(state => state.auth.user);
 
     const dispatch = useDispatch();
-    const [card, setCard] = useState({});
-    const [complete, setComplete] = useState(false);
+    const [ card, setCard ] = useState({});
+    const [ complete, setComplete ] = useState(false);
+    const [ cardNumberOk, setCardNumberOk ] = useState(false);
 
     useLayoutEffect(() => {
         navigation.setOptions({
@@ -37,10 +37,12 @@ const NewCardScreen = ({ navigation }) => {
 
     const handleInputChange = (data) => {
         setCard({ ...card, ...data })
+        if (data.length >= 8) {setCardNumberOk(true)}
+        else {setCardNumberOk(false)}
     };
 
     const handleSave = () => {
-        dispatch(addCard({...card, userId: user.id}));
+        dispatch(addCard({...card, userId: route?.params?.userId}));
         navigation.navigate("CardList");
     }
 
@@ -48,6 +50,9 @@ const NewCardScreen = ({ navigation }) => {
         <ScrollView style={newCardScreen}>
             <View style={styles.newCardScreenContainer}>
                 <GenericInput label="Number * : " onInputChange={(text) => handleInputChange({ number: text })} />
+                {!cardNumberOk && (
+                    <Text style={styles.newCardScreenErrorText}>Card number must contain 8 numbers at least</Text>
+                )}
                 <View style={styles.newCardScreenSubcontainer}>
                     <GenericInput label="Month * : " onInputChange={(text) => handleInputChange({ month: text })} style={{width: 85}} />
                     <GenericInput label="Year * : " onInputChange={(text) => handleInputChange({ year: text })} style={{width: 120}} />

@@ -14,6 +14,13 @@ export default StyleSheet.create({
     newCardScreenInputContainer: {
         paddingVertical: 10,
     },
+    newCardScreenErrorText: {
+        fontSize: 12,
+        fontStyle: "italic",
+        color: "red",
+        textAlign: "center",
+        marginBottom: 12,
+    },
     newCardScreenLabel: {
         color: colors.TAWNY,
         paddingHorizontal: 5,
