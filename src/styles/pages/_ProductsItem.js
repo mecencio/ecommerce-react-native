@@ -35,6 +35,11 @@ export default StyleSheet.create({
         fontSize: 18,
         marginVertical: 10,
     },
+    productsShipping: {
+        color: "green",
+        fontWeight: "bold",
+        fontSize: 12,
+    },
 
     //DARK
     productsItemContainerDark: {
@@ -66,5 +71,10 @@ export default StyleSheet.create({
         fontSize: 18,
         marginVertical: 10,
         color: colors.COCOA_BROWN,
+    },
+    productsShippingDark: {
+        color: "lightgreen",
+        fontWeight: "bold",
+        fontSize: 12,
     },
 })

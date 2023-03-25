@@ -41,23 +41,23 @@ const ProfileScreen = ({ navigation }) => {
             <View >
                 <TouchableOpacity onPress={() => console.log("Mis datos")} style={ProfileScreenOptions}>
                     <Ionicons name="person-circle-outline" size={24} color={iconColor} />
-                    <Text style={ProfileScreenOptionsText}>Mis datos</Text>
+                    <Text style={ProfileScreenOptionsText}>Management</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => console.log("Seguridad")} style={ProfileScreenOptions}>
                     <Ionicons name="lock-closed-outline" size={24} color={iconColor} />
-                    <Text style={ProfileScreenOptionsText}>Seguridad</Text>
+                    <Text style={ProfileScreenOptionsText}>Security</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => navigation.navigate("CardTab")} style={ProfileScreenOptions}>
                     <Ionicons name="card-outline" size={24} color={iconColor} />
-                    <Text style={ProfileScreenOptionsText}>Mis Tarjetas</Text>
+                    <Text style={ProfileScreenOptionsText}>Cards</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => navigation.navigate("AddressTab")} style={ProfileScreenOptions}>
                     <Ionicons name="location-outline" size={24} color={iconColor} />
-                    <Text style={ProfileScreenOptionsText}>Mis Direcciones</Text>
+                    <Text style={ProfileScreenOptionsText}>Adresses</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={handleLogout} style={ProfileScreenOptions}>
                     <Ionicons name="log-out-outline" size={24} color={iconColor} />
-                    <Text style={ProfileScreenOptionsText}>Cerrar sesión</Text>
+                    <Text style={ProfileScreenOptionsText}>Logout</Text>
                 </TouchableOpacity>
             </View>
         </View>

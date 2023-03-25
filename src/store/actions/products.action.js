@@ -1,14 +1,29 @@
-import { URL_API_ML } from "../../env/database";
+import { URL_API_ML, URL_API_ML_PRODUCT_DESCRIPTION } from "../../env/database";
 
 export const SELECTED_PRODUCT = "SELECTED_PRODUCT";
 export const FILTERED_PRODUCT = "FILTERED_PRODUCT";
 export const SHOW_LOADER = "SHOW_LOADER";
 export const HIDE_LOADER = "HIDE_LOADER";
 
-export const selectedProduct = (id) => ({
-    type: SELECTED_PRODUCT,
-    productId: id,
-});
+export const selectedProduct = (item) => {
+    return async dispatch => {
+        try {
+            dispatch({ type: SHOW_LOADER })
+            let data = await fetch(URL_API_ML_PRODUCT_DESCRIPTION + item.id)
+                .then( response => { return response.json() } );
+            let description = await fetch(URL_API_ML_PRODUCT_DESCRIPTION + item.id + "/description")
+            dispatch({
+                type: SELECTED_PRODUCT,
+                payload: {
+                    product: { ...item, description: description.plain_text },
+                    loading: false,
+                },
+            })
+        } catch (error) {
+            throw error
+        }
+    }
+}
 
 export const showLoader = () => {
     return async dispatch => {
@@ -38,9 +53,13 @@ export const filteredProduct = (categoryId, offset, selectedSort) => {
                     id: item.id,
                     category: categoryId,
                     name: item.title,
-                    description: "Hola",
+                    currency: item.currency_id,
                     price: item.price,
                     img: arr.join(""),
+                    free_shipping: item.shipping.free_shipping,
+                    condition: item.condition,
+                    sold_quantity: item.sold_quantity,
+                    available_quantity: item.available_quantity,
                 }
             })
 

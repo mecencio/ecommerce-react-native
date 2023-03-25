@@ -8,6 +8,8 @@ const ProductsItem = ({ item, onSelected }) => {
     const productsTextTitle = colorScheme === "light" ? styles.productsTextTitle : styles.productsTextTitleDark;
     const productsTextPrice = colorScheme === "light" ? styles.productsTextPrice : styles.productsTextPriceDark;
     const productsImage = colorScheme === "light" ? styles.productsImage : styles.productsImageDark;
+    const productsShipping = colorScheme === "light" ? styles.productsShipping : styles.productsShippingDark
+
     const currencyFormat = amount => {
         return "$ " + Number(amount)
             .toFixed(2)
@@ -28,8 +30,10 @@ const ProductsItem = ({ item, onSelected }) => {
                 </View>
                 <View style={styles.productsTextContainer}>
                     <Text style={productsTextTitle}>{item.name}</Text>
+                    { item.free_shipping && (
+                        <Text style={productsShipping}>Free shipping</Text>
+                    )}
                     <Text style={productsTextPrice}>{item.price === null ? 0 : currencyFormat(item.price)}</Text>
-                    <Text>{item.description}</Text>
                 </View>
             </TouchableOpacity>
         </View>

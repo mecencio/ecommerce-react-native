@@ -13,7 +13,8 @@ const DetailsScreen = ({ navigation, route }) => {
     }, []);
 
     const handleAddItem = () => {
-        dispatch(addItem(item));
+        console.log("first")
+        //dispatch(addItem(item));
     };
 
     return (
