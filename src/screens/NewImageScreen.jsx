@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { View, Text, ScrollView, Button, useColorScheme } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import { addImage } from "../store/actions/image.action"
 import ImageSelector from '../components/ImageSelector';
 import styles from '../styles/styles';
 import colors from '../styles/constants/colors';
+import { addImage } from '../store/actions/auth.action';
 
 const NewImageScreen = ({ navigation }) => {
     const dispatch = useDispatch();
@@ -15,7 +15,7 @@ const NewImageScreen = ({ navigation }) => {
 
     const [image, setImage] = useState("");
     const user = useSelector(state => state.auth.user);
-    const oldImage = useSelector(state => state.image.image);
+    const oldImage = useSelector(state => state.auth.user?.image);
 
     const handleSave = () => {
         dispatch(addImage(user.id, image))

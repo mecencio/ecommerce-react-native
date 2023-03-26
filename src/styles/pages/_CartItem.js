@@ -18,4 +18,14 @@ export default StyleSheet.create({
         alignItems: "center",
         justifyContent: "space-between",
     },
+    cartItemText: {},
+
+    // Dark
+    cartItemHeaderDark: {
+        color: colors.PRINCETON_ORANGE,
+        fontSize: 18,
+    },
+    cartItemTextDark: {
+        color: colors.SELECTIVE_YELLOW,
+    },
 })

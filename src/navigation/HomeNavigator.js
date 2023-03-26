@@ -26,19 +26,6 @@ export default HomeNavigator = () => {
                 headerTitleAlign: "center",
                 headerRight: () => (
                     <View>
-                        {!touched ? (
-                            <TouchableOpacity >
-                                <Ionicons name="search-outline" />
-                            </TouchableOpacity>
-                        ) : (
-                            <TouchableOpacity>
-                                <TextInput
-                                    style={styles.navTextInput}
-                                    onChangeText={() => console.log()}
-                                    value={text}
-                                />
-                            </TouchableOpacity>
-                        )}
                         <TouchableOpacity onPress={() => console.log("cart")}>
                             <Ionicons
                                 name="cart-outline"

@@ -1,4 +1,5 @@
-import { fetchUser, newUser } from "../../db";
+import * as FileSystem from 'expo-file-system';
+import { fetchUser, newUser, changeImage } from "../../db";
 import { URL_AUTH_RESET_PASSWORD, URL_AUTH_SIGNIN, URL_AUTH_SIGNUP } from "../../env/database";
 import User from "../../models/User";
 import * as SecureStore from 'expo-secure-store';
@@ -7,8 +8,10 @@ export const SIGNUP = "SIGNUP";
 export const SIGNIN = "SIGNIN";
 export const RESET_PASSWORD = "RESET_PASSWORD";
 export const LOGOUT = "LOGOUT";
+export const ERROR_LOGIN = "ERROR_LOGIN";
+export const ADD_IMAGE = 'ADD_IMAGE';
 
-export const signup = ( email, password ) => {
+export const signup = (email, password) => {
     return async dispatch => {
         try {
             const response = await fetch(URL_AUTH_SIGNUP, {
@@ -37,6 +40,7 @@ export const signup = ( email, password ) => {
                 type: SIGNUP,
                 token: data.idToken,
                 user: user,
+                error: null
             })
         } catch (error) {
             throw error;
@@ -44,7 +48,7 @@ export const signup = ( email, password ) => {
     }
 }
 
-export const signin = ( email, password ) => {
+export const signin = (email, password) => {
     return async dispatch => {
         try {
             const response = await fetch(URL_AUTH_SIGNIN, {
@@ -63,21 +67,29 @@ export const signin = ( email, password ) => {
 
             try {
                 SecureStore.setItemAsync("userId", data.localId);
-                SecureStore.setItemAsync("idToken", data.idToken)
+                SecureStore.setItemAsync("idToken", data.idToken);
                 const result = await fetchUser(data.localId);
-                const idUser = result.rows._array[0].id
-                const emailUser = result.rows._array[0].email
-                const firstnameUser = result.rows._array[0].firstname || ""
-                const lastnameUser = result.rows._array[0].lastname || ""
-                const documentUser = result.rows._array[0].document || ""
-                const phoneUser = result.rows._array[0].phone || ""
-                const imageUser = result.rows._array[0].image || ""
+                if (result.rows._array) {
+                    const idUser = result.rows._array[0].id
+                    const emailUser = result.rows._array[0].email
+                    const firstnameUser = result.rows._array[0].firstname || ""
+                    const lastnameUser = result.rows._array[0].lastname || ""
+                    const documentUser = result.rows._array[0].document || ""
+                    const phoneUser = result.rows._array[0].phone || ""
+                    const imageUser = result.rows._array[0].image || ""
 
-                dispatch({
-                    type: SIGNIN,
-                    token: data.idToken,
-                    user: new User(idUser, emailUser, firstnameUser, lastnameUser, documentUser, phoneUser, imageUser),
-                })
+                    dispatch({
+                        type: SIGNIN,
+                        token: data.idToken,
+                        user: new User(idUser, emailUser, firstnameUser, lastnameUser, documentUser, phoneUser, imageUser),
+                        error: null,
+                    })
+                } else {
+                    dispatch({
+                        type: ERROR_LOGIN,
+                        error: "Mail and/or password invalid"
+                    })
+                }
 
             } catch (error) {
                 throw error;
@@ -89,7 +101,7 @@ export const signin = ( email, password ) => {
     }
 };
 
-export const resetPassword = ( email ) => {
+export const resetPassword = (email) => {
     return async dispatch => {
         try {
             const response = await fetch(URL_AUTH_RESET_PASSWORD, {
@@ -143,6 +155,12 @@ export const loadUser = (userId) => {
                     type: SIGNIN,
                     token: idToken,
                     user: new User(idUser, emailUser, firstnameUser, lastnameUser, documentUser, phoneUser, imageUser),
+                    error: null,
+                })
+            } else {
+                dispatch({
+                    type: ERROR_LOGIN,
+                    error: "Mail and/or password invalid"
                 })
             }
         } catch (error) {
@@ -150,3 +168,22 @@ export const loadUser = (userId) => {
         }
     }
 };
+
+export const addImage = ( userId, image ) => {
+    return async dispatch => {
+        const fileName = image.split('/').pop();
+        const Path = FileSystem.documentDirectory + fileName;
+
+        try {
+            FileSystem.moveAsync({
+                from: image,
+                to: Path
+            })
+            const result = await changeImage(userId, Path)
+        } catch (error) {
+            throw error;
+        }
+
+        dispatch({ type: ADD_IMAGE, payload: { image: Path } })
+    }
+}

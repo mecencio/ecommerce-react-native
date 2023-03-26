@@ -1,6 +1,6 @@
 import React, { useReducer, useState, useEffect, useCallback } from 'react';
 import { Text, View, KeyboardAvoidingView, TouchableOpacity, Alert, Image, ImageBackground } from 'react-native';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { resetPassword, signin } from '../../store/actions/auth.action';
 import InputEmail from '../../components/InputEmail';
 import InputPassword from '../../components/InputPassword';
@@ -38,7 +38,7 @@ const LoginScreen = ({ navigation }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const dispatch = useDispatch();
-    const [error, setError] = useState(null);
+    const error = useSelector(state => state.auth.error)
     const [ formState, dispatchFormState ] = useReducer(formReducer, {
         inputValues: {
             email: "",

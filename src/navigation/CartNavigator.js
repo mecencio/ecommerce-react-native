@@ -8,6 +8,7 @@ const Stack = createNativeStackNavigator();
 
 export default CartNavigator = () => {
     const colorScheme = useColorScheme();
+    const homeStyle = colorScheme === "light" ? styles.homeStyle : styles.homeStyleDark;
     const IconColor = colorScheme === "light" ? colors.DARK : colors.PRINCETON_ORANGE;
 
     return (
@@ -15,11 +16,8 @@ export default CartNavigator = () => {
             initialRouteName="Categories"
             screenOptions={{
                 headerShadowVisible: true,
-                headerStyle: styles.indexStyle,
+                headerStyle: homeStyle,
                 headerTintColor: IconColor,
-                headerTitleStyle: {
-                    fontWeight: "bold",
-                },
                 headerTitleAlign: "center",
             }}
         >
@@ -27,7 +25,8 @@ export default CartNavigator = () => {
                 name="Cart"
                 component={CartScreen}
                 options={{
-                    title: "Cart"
+                    title: "",
+                    headerTintColor: IconColor,
                 }}
             />
         </Stack.Navigator>

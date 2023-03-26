@@ -1,6 +1,7 @@
 import React from "react";
 import { Image, Text, TouchableOpacity, useColorScheme, View } from "react-native";
 import styles from "../styles/styles";
+import { currencyFormat } from "../data/functions";
 
 const ProductsItem = ({ item, onSelected }) => {
     const colorScheme = useColorScheme();
@@ -9,12 +10,6 @@ const ProductsItem = ({ item, onSelected }) => {
     const productsTextPrice = colorScheme === "light" ? styles.productsTextPrice : styles.productsTextPriceDark;
     const productsImage = colorScheme === "light" ? styles.productsImage : styles.productsImageDark;
     const productsShipping = colorScheme === "light" ? styles.productsShipping : styles.productsShippingDark
-
-    const currencyFormat = amount => {
-        return "$ " + Number(amount)
-            .toFixed(2)
-            .replace(/\d(?=(\d{3})+\.)/g, '$&,');
-    };
 
     return (
         <View style={styles.productsItem}>

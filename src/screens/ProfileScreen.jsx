@@ -19,7 +19,7 @@ const ProfileScreen = ({ navigation }) => {
     const iconColor = colorScheme === "light" ? colors.TAWNY : colors.XANTHOUS;
 
     const user = useSelector(state => state.auth.user)
-    const image = useSelector(state => state.image.image)
+    const image = useSelector(state => state.auth.user?.image)
 
     const handleLogout = () => {
         dispatch(logout());
@@ -28,13 +28,14 @@ const ProfileScreen = ({ navigation }) => {
     return (
         <View style={ProfileScreen}>
             <View style={ProfileScreenHeader}>
-                { image ? (
-                    <Image style={styles.profileScreenImage} source={{ uri: image }} />
+                {image ? (
+                    <TouchableOpacity onPress={() => navigation.navigate("NewImage")} style={styles.profileScreenEmptyImage} >
+                        <Image style={styles.profileScreenImage} source={{ uri: image }} />
+                    </TouchableOpacity>
                 ) : (
                     <TouchableOpacity onPress={() => navigation.navigate("NewImage")} style={styles.profileScreenEmptyImage} >
                         <Text style={ProfileScreenImageText}>New Image</Text>
                     </TouchableOpacity>
-                    // <Ionicons name="person-circle-outline" size={56} color={iconColor} onPress={() => navigation.navigate("NewImage")}/>
                 )}
                 <Text style={ProfileScreenHeaderText}>{user.firstname}NICOLAS NAHUEL {user.lastname}</Text>
             </View>

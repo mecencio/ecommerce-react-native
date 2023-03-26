@@ -81,6 +81,20 @@ export const fetchUser = (userId) => {
     return promise;
 }
 
+export const selectAll = () => {
+    const promise = new Promise((resolve, reject) => {
+        db.transaction(tx => {
+            tx.executeSql(
+                "SELECT * FROM user",
+                [],
+                (_, result) => resolve(result),
+                (_, err) => reject(err),
+            )
+        })
+    })
+    return promise;
+}
+
 export const insertAddress = (street, number, floor, city, province, country, information, lat, lng, userId) => {
     const promise = new Promise((resolve, reject) => {
         db.transaction(tx => {

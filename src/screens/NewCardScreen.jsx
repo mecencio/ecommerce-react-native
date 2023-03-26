@@ -33,12 +33,12 @@ const NewCardScreen = ({ navigation, route }) => {
         } else {
             setComplete(false)
         }
+        if (card?.number?.length >= 16) {setCardNumberOk(true)}
+        else {setCardNumberOk(false)}
     }, [card])
 
     const handleInputChange = (data) => {
         setCard({ ...card, ...data })
-        if (data.length >= 8) {setCardNumberOk(true)}
-        else {setCardNumberOk(false)}
     };
 
     const handleSave = () => {
@@ -51,7 +51,7 @@ const NewCardScreen = ({ navigation, route }) => {
             <View style={styles.newCardScreenContainer}>
                 <GenericInput label="Number * : " onInputChange={(text) => handleInputChange({ number: text })} />
                 {!cardNumberOk && (
-                    <Text style={styles.newCardScreenErrorText}>Card number must contain 8 numbers at least</Text>
+                    <Text style={styles.newCardScreenErrorText}>Card number must contain 16 numbers at least</Text>
                 )}
                 <View style={styles.newCardScreenSubcontainer}>
                     <GenericInput label="Month * : " onInputChange={(text) => handleInputChange({ month: text })} style={{width: 85}} />
