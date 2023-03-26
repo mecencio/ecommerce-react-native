@@ -12,7 +12,8 @@ const ProductReducer = (state = initialState, action) => {
         case SELECTED_PRODUCT:
             return {
                 ...state,
-                selected: action.payload
+                selected: action.payload.product,
+                loading: action.payload.loading
             };
         case FILTERED_PRODUCT:
             return {

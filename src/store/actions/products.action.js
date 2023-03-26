@@ -12,10 +12,11 @@ export const selectedProduct = (item) => {
             let data = await fetch(URL_API_ML_PRODUCT_DESCRIPTION + item.id)
                 .then( response => { return response.json() } );
             let description = await fetch(URL_API_ML_PRODUCT_DESCRIPTION + item.id + "/description")
+                .then(response => { return response.json() } )
             dispatch({
                 type: SELECTED_PRODUCT,
                 payload: {
-                    product: { ...item, description: description.plain_text },
+                    product: { ...item, images: data.pictures, description: description.plain_text },
                     loading: false,
                 },
             })

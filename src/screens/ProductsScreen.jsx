@@ -30,11 +30,10 @@ const ProductsScreen = ({ navigation }) => {
     }
 
     const handleSelectedProduct = (item) => {
-        console.log(item.id)
-        // dispatch(selectedProduct(item.id));
-        // navigation.navigate("Details", {
-        //     name: item.name
-        // })
+        dispatch(selectedProduct(item));
+        navigation.navigate("Details", {
+            name: ""
+        })
     }
 
     const renderProductItem = ({ item }) => (
