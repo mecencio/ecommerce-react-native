@@ -6,6 +6,7 @@ import { removeItem, decreaseItem, confirmCart, increaseItem, getCart } from "..
 import styles from "../styles/styles";
 import { currencyFormat } from "../data/functions";
 import { useEffect } from "react";
+import { getOrders } from "../store/actions/order.action";
 
 const CartScreen = () => {
     const colorScheme = useColorScheme();
@@ -35,7 +36,8 @@ const CartScreen = () => {
     };
 
     const handleConfirmCart = () => {
-        dispatch(confirmCart(items, total));
+        dispatch(confirmCart(items, total, user.id));
+        dispatch(getOrders(user.id));
     }
 
     useEffect(() => {
@@ -63,7 +65,7 @@ const CartScreen = () => {
                         />
                     </View>
                     <View style={cartScreenFooter}>
-                        <TouchableOpacity style={cartScreenConfirm} onPress={() => console.log(items.length)}>
+                        <TouchableOpacity style={cartScreenConfirm} onPress={handleConfirmCart}>
                             <Text style={cartScreenTextConfirm} >Confirmar</Text>
                             <View style={styles.cartScreenTotal}>
                                 <Text style={cartScreenText}>Total</Text>

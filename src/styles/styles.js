@@ -19,6 +19,7 @@ import _NewAddressScreen from "./pages/_NewAddressScreen";
 import _NewCardScreen from "./pages/_NewCardScreen";
 import _NewImageScreen from "./pages/_NewImageScreen";
 import _OrderItem from "./pages/_OrderItem";
+import _OrdersScreen from "./pages/_OrdersScreen";
 import _ProductsItem from "./pages/_ProductsItem";
 import _ProductsScreen from "./pages/_ProductsScreen";
 import _ProfileScreen from "./pages/_ProfileScreen";
@@ -50,4 +51,5 @@ export default {
     ..._CardListScreen,
     ..._GenericInput,
     ..._NewCardScreen,
+    ..._OrdersScreen,
 }

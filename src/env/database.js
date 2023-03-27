@@ -1,4 +1,4 @@
-export const URL_API = "https://ecommerce-react-native-aae15-default-rtdb.firebaseio.com";
+export const URL_API = "https://ecommerce-react-native-cb26d-default-rtdb.firebaseio.com";
 export const URL_API_ML = "https://api.mercadolibre.com/sites/MLA/search?";
 export const URL_API_ML_PRODUCT_DESCRIPTION = "https://api.mercadolibre.com/items/";
 

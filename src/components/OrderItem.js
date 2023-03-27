@@ -1,24 +1,42 @@
 import React from 'react';
-import { Text, View, TouchableOpacity } from 'react-native';
+import { Text, View, Image, TouchableOpacity, useColorScheme } from 'react-native';
 import Ionicons from "@expo/vector-icons/Ionicons";
 import styles from "../styles/styles";
+import { currencyFormat } from '../data/functions';
 
 const formatDay = (time) => {
     const date = new Date(time);
     return date.toLocaleDateString();
 }
 
-const OrderItem = ({ item, onDelete }) => {
+const OrderItem = ({ orders }) => {
+    const colorScheme = useColorScheme();
+    const orderItem = colorScheme === 'light' ? styles.orderItem : styles.orderItemDark;
+    const orderItemDate = colorScheme === 'light' ? styles.orderItemDate : styles.orderItemDateDark;
+    const orderItemHeader = colorScheme === 'light' ? styles.orderItemHeader : styles.orderItemHeaderDark;
+    const orderItemText = colorScheme === 'light' ? styles.orderItemText : styles.orderItemTextDark;
+    const orderItemTotal = colorScheme === 'light' ? styles.orderItemTotal : styles.orderItemTotalDark;
+
     return (
-        <View style={styles.OrderItem}>
+        <View style={orderItem}>
             <View>
-                <Text style={styles.date}>{formatDay(item.date)}</Text>
-                <Text style={styles.total}>Total</Text>
-            </View>
-            <View>
-                <TouchableOpacity onPress={() => onDelete()}>
-                    <Ionicons name="md-trash" color={"red"} size={22} />
-                </TouchableOpacity>
+                <Text style={orderItemDate}>Date: {formatDay(orders.date)}</Text>
+                {orders.items.map(item => (
+                    <View style={styles.orderItemContainer} key={orders.id + "/" + item.id}>
+                        <View>
+                            <Text style={orderItemHeader}>{item.name}</Text>
+                        </View>
+                        <View style={styles.orderItemDetail}>
+                            <Image source={{ uri: item.image }} style={styles.orderItemImage} />
+                            <View>
+                                <Text style={orderItemText} >Cantidad: {item.quantity}</Text>
+                                <Text style={orderItemText} >{currencyFormat(item.price)}</Text>
+                            </View>
+                        </View>
+                    </View>
+                ))
+                }
+                <Text style={orderItemTotal}>Total: {currencyFormat(orders.total)}</Text>
             </View>
         </View>
     )

@@ -1,4 +1,4 @@
-import { deleteProductInCart, insertProductToCart, loadCart, searchProductInCart, updateQuantity } from "../../db";
+import { deleteProductInCart, deleteUserCart, insertProductToCart, loadCart, searchProductInCart, updateQuantity } from "../../db";
 import { URL_API } from "../../env/database"
 
 export const ADD_ITEM = "ADD_ITEM";
@@ -93,7 +93,7 @@ export const decreaseItem = (item, userId) => {
     }
 }
 
-export const confirmCart = (items, total) => {
+export const confirmCart = (items, total, userId) => {
     return async (dispatch) => {
         try {
             const response = await fetch(`${URL_API}/orders.json`, {
@@ -102,12 +102,14 @@ export const confirmCart = (items, total) => {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
+                    userId,
                     date: Date.now(),
                     items: { ...items },
                     total,
                 }),
             })
             const result = await response.json();
+            await deleteUserCart(userId)
             dispatch({
                 type: CONFIRM_PURCHASE,
                 confirm: true,

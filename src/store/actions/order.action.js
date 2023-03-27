@@ -2,7 +2,7 @@ import { URL_API } from "../../env/database";
 
 export const GET_ORDERS = "GET_ORDERS";
 
-export const getOrders = () => {
+export const getOrders = (userId) => {
     return async dispatch => {
         try {
             const response = await fetch(`${URL_API}/orders.json`, {
@@ -16,9 +16,12 @@ export const getOrders = () => {
                 ...result[key],
                 id: key,
             }))
-            dispatch({ type: GET_ORDERS, orders: orders});
+            
+            const userOrders = orders.filter(order => order.userId === userId)
+            
+            dispatch({ type: GET_ORDERS, orders: userOrders});
         } catch (error) {
-            throw error
+            console.log(error)
         }
     }
 }

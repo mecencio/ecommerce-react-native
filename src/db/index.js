@@ -253,10 +253,7 @@ export const updateQuantity = (idProduct, quantity, userId) => {
                 "UPDATE cart SET quantity = (?) WHERE idProduct = (?) AND userId = (?);",
                 [quantity, idProduct, userId],
                 (_, result) => resolve(result),
-                (_, err) => {
-                    console.log(err);
-                    reject(err)
-                },
+                (_, err) => reject(err),
             )
         })
     })
@@ -274,5 +271,19 @@ export const deleteProductInCart = (idProduct, userId) => {
             )
         })
     })
+    return promise;
+}
+
+export const deleteUserCart = (userId) => {
+    const promise = new Promise((resolve, reject) => {
+        db.transaction( tx => {
+            tx.executeSql(
+                "DELETE FROM cart WHERE userId = (?)",
+                [userId],
+                (_, result) => resolve(result),
+                (_, err) => reject(err),
+            )
+        })
+    });
     return promise;
 }

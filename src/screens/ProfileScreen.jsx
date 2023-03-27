@@ -40,14 +40,6 @@ const ProfileScreen = ({ navigation }) => {
                 <Text style={ProfileScreenHeaderText}>{user.firstname} {user.lastname}</Text>
             </View>
             <View >
-                <TouchableOpacity onPress={() => console.log("Mis datos")} style={ProfileScreenOptions}>
-                    <Ionicons name="person-circle-outline" size={24} color={iconColor} />
-                    <Text style={ProfileScreenOptionsText}>Management</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => console.log("Seguridad")} style={ProfileScreenOptions}>
-                    <Ionicons name="lock-closed-outline" size={24} color={iconColor} />
-                    <Text style={ProfileScreenOptionsText}>Security</Text>
-                </TouchableOpacity>
                 <TouchableOpacity onPress={() => navigation.navigate("CardTab")} style={ProfileScreenOptions}>
                     <Ionicons name="card-outline" size={24} color={iconColor} />
                     <Text style={ProfileScreenOptionsText}>Cards</Text>

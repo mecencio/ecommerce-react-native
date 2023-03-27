@@ -24,17 +24,6 @@ export default HomeNavigator = () => {
                 headerShadowVisible: true,
                 headerStyle: homeStyle,
                 headerTitleAlign: "center",
-                headerRight: () => (
-                    <View>
-                        <TouchableOpacity onPress={() => console.log("cart")}>
-                            <Ionicons
-                                name="cart-outline"
-                                color={IconColor}
-                                size={25}
-                            />
-                        </TouchableOpacity>
-                    </View>
-                ),
             }}
         >
             <Stack.Screen

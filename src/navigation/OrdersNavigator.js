@@ -8,18 +8,16 @@ const Stack = createNativeStackNavigator();
 
 export default OrdersNavigator = () => {
     const colorScheme = useColorScheme();
-    const iconColor = colorScheme === "light" ? colors.DARK : colors.PRINCETON_ORANGE;
+    const homeStyle = colorScheme === "light" ? styles.homeStyle : styles.homeStyleDark;
+    const IconColor = colorScheme === "light" ? colors.DARK : colors.PRINCETON_ORANGE;
 
     return ( 
         <Stack.Navigator
             initialRouteName="Orders"
             screenOptions={{
                 headerShadowVisible: true,
-                headerStyle: styles.indexStyle,
-                headerTintColor: iconColor,
-                headerTitleStyle: {
-                    fontWeight: "bold",
-                },
+                headerStyle: homeStyle,
+                headerTintColor: IconColor,
                 headerTitleAlign: "center",
             }}
         >
@@ -27,7 +25,8 @@ export default OrdersNavigator = () => {
                 name="Orders"
                 component={OrdersScreen}
                 options={{
-                    title: "Orders",
+                    title: "",
+                    headerTintColor: IconColor,
                 }}
             />
         </Stack.Navigator>
