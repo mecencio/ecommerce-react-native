@@ -1,8 +1,12 @@
 {
   "expo": {
-    "name": "ecommerce-app",
-    "slug": "ecommerce-app",
+    "name": "compra-express",
+    "slug": "compra-express",
     "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android"
+    ],
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "automatic",
@@ -18,16 +22,31 @@
       "**/*"
     ],
     "ios": {
+      "bundleIdentifier": "com.coderhouse.places",
+      "buildNumber": "1.0.0",
       "supportsTablet": true
     },
     "android": {
+      "package": "com.coderhouse.places",
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "permissions": [
+        "CAMERA",
+        "ACCESS_FINE_LOCATION",
+        "WRITE_EXTERNAL_STORAGE"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "f584a04a-ca8d-4d1a-bf17-df06ec54536f"
+      }
+    },
+    "owner": "mecencio"
   }
 }
