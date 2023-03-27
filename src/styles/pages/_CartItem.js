@@ -8,6 +8,11 @@ export default StyleSheet.create({
         borderBottomWidth: 1,
         borderBottomColor: colors.PRINCETON_ORANGE,
     },
+    cartItemImage: {
+        borderRadius: 50,
+        width: 70,
+        height: 70,
+    },
     cartItemHeader: {
         fontSize: 18,
     },

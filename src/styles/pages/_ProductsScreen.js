@@ -54,4 +54,10 @@ export default StyleSheet.create({
         fontStyle: "italic",
         paddingRight: 15,
     },
+    productsScreenSpinnerDark: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: colors.DARK,
+    },
 })

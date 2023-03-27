@@ -56,7 +56,7 @@ export const filteredProduct = (categoryId, offset, selectedSort) => {
                     name: item.title,
                     currency: item.currency_id,
                     price: item.price,
-                    img: arr.join(""),
+                    image: arr.join(""),
                     free_shipping: item.shipping.free_shipping,
                     condition: item.condition,
                     sold_quantity: item.sold_quantity,

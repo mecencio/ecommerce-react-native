@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { ActivityIndicator, FlatList, View, TouchableOpacity, Text, useColorScheme } from "react-native";
+import { FlatList, View, TouchableOpacity, Text, useColorScheme } from "react-native";
 import ProductsItem from "../components/ProductsItem";
 import { useSelector, useDispatch } from "react-redux";
-import { selectedProduct, filteredProduct, setOrder } from "../store/actions/products.action";
+import { selectedProduct, filteredProduct } from "../store/actions/products.action";
 import styles from "../styles/styles";
-import colors from "../styles/constants/colors";
+import Spinner from "../components/Spinner";
 
 const ProductsScreen = ({ navigation }) => {
     const colorScheme = useColorScheme();
@@ -42,9 +42,7 @@ const ProductsScreen = ({ navigation }) => {
 
     if (loading === true) {
         return (
-            <View style={styles.productsScreenSpinner}>
-                <ActivityIndicator size="large" color={colors.PRINCETON_ORANGE} />
-            </View>
+            <Spinner/>
         )
     } else {
         return (

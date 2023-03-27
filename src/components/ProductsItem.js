@@ -20,7 +20,7 @@ const ProductsItem = ({ item, onSelected }) => {
                 <View style={styles.productsImageContainer}>
                     <Image
                         style={productsImage}
-                        source={{ uri: item.img }}
+                        source={{ uri: item.image }}
                     />
                 </View>
                 <View style={styles.productsTextContainer}>

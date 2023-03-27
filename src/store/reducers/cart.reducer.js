@@ -1,4 +1,4 @@
-import { ADD_ITEM, REMOVE_ITEM, CONFIRM_PURCHASE, DECREASE_ITEM } from "../actions/cart.action";
+import { ADD_ITEM, REMOVE_ITEM, CONFIRM_PURCHASE, DECREASE_ITEM, INCREASE_ITEM, GET_CART } from "../actions/cart.action";
 
 const initialState = {
     items: [],
@@ -11,10 +11,12 @@ const finalPrice = (items) => {
 
 const CartReducer = (state = initialState, action) => {
     switch (action.type) {
+        case GET_CART:
+            return { ...state, items: [...action.cart], total: finalPrice(action.cart) }
         case ADD_ITEM:
-            const index = state.items.findIndex(item => item.id === action.item.id);
+            const index = state.items.findIndex(item => item.id === action.payload.item.id);
             if (index === -1) {
-                const item = { ...action.item, quantity: 1 };
+                const item = { ...action.payload.item };
                 const updatedCart = [...state.items, item];
                 return { ...state, items: updatedCart, total: finalPrice(updatedCart) }
             } else {
@@ -22,7 +24,7 @@ const CartReducer = (state = initialState, action) => {
                 items[index].quantity++;
                 return { ...state, items: items, total: finalPrice(items) }
             }
-        case DECREASE_ITEM:
+        case INCREASE_ITEM:
             const id = state.items.findIndex(item => item.id === action.itemId);
             if (id !== -1) {
                 const arrayItems = state.items;
@@ -32,17 +34,12 @@ const CartReducer = (state = initialState, action) => {
         case DECREASE_ITEM:
             const indexItem = state.items.findIndex(item => item.id === action.itemId);
             if (indexItem !== -1) {
-                if (state.items[indexItem].quantity === 1) {
-                    const cart = [...state.items].filter(item => item.id !== action.itemId);
-                    return { ...state, items: cart, total: finalPrice(cart) }
-                } else {
-                    const arrayItems = state.items;
-                    arrayItems[indexItem].quantity--;
-                    return { ...state, items: arrayItems, total: finalPrice(arrayItems) }
-                }
+                const arrayItems = state.items;
+                arrayItems[indexItem].quantity--;
+                return { ...state, items: arrayItems, total: finalPrice(arrayItems) }
             }
         case REMOVE_ITEM:
-            const newCart = [...state.items].filter(item => item.id !== action.itemId);
+            const newCart = [...state.items].filter(item => item.idProduct !== action.itemId);
             return { ...state, items: newCart, total: finalPrice(newCart) }
         case CONFIRM_PURCHASE:
             return state;

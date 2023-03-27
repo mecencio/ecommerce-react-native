@@ -15,12 +15,6 @@ class User {
         this.phone = phone ? phone :"",
         this.email = email
         this.image = image ? image : ""
-        this.addresses = []
-        this.cards = []
-        this.favorites = []
-        this.orders = []
-        this.cart = []
-        this.saved = []
     }
 }
 

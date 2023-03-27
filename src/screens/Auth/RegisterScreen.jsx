@@ -5,6 +5,7 @@ import { signup } from '../../store/actions/auth.action';
 import InputEmail from '../../components/InputEmail';
 import InputPassword from '../../components/InputPassword';
 import styles from "../../styles/styles";
+import GenericInput from "../../components/GenericInput";
 
 const FORM_INPUT_UPDATE = "FORM_INPUT_UPDATE";
 
@@ -37,6 +38,8 @@ const formReducer = (state, action) => {
 const RegisterScreen = ({ navigation }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [firstname, setFirstname] = useState('');
+    const [lastname, setLastname] = useState('');
     const dispatch = useDispatch();
     const [error, setError] = useState(null);
     const [formState, dispatchFormState] = useReducer(formReducer, {
@@ -52,10 +55,10 @@ const RegisterScreen = ({ navigation }) => {
     }, [error])
 
     const handleSignup = () => {
-        if (formState.formIsValid) {
-            dispatch(signup(formState.inputValues.email, formState.inputValues.password));
+        if (formState.formIsValid && firstname && lastname) {
+            dispatch(signup(firstname, lastname, formState.inputValues.email, formState.inputValues.password));
         } else {
-            Alert.alert("Formulario Inválido", "Ingresa email y password válido", [{ text: "OK" }]);
+            Alert.alert("Invalid Form", "Please complete all fields correctly", [{ text: "OK" }]);
         }
     }
 
@@ -76,6 +79,8 @@ const RegisterScreen = ({ navigation }) => {
                 </View>
                 <View style={styles.registerScreenContainer}>
                     <Text style={styles.registerScreenTitle}>REGISTER</Text>
+                    <GenericInput styleInput={styles.input} label="Firstname :" onInputChange={(text) => setFirstname(text)} />
+                    <GenericInput styleInput={styles.input} label="Lastname :" onInputChange={(text) => setLastname(text)} />
                     <InputEmail
                         id="email"
                         label="Email"

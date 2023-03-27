@@ -2,9 +2,10 @@ import React from "react";
 import { Text, View, FlatList, TouchableOpacity, useColorScheme } from "react-native";
 import CartItem from "../components/CartItem"
 import { useSelector, useDispatch } from "react-redux";
-import { removeItem, decreaseItem, confirmCart, increaseItem } from "../store/actions/cart.action";
+import { removeItem, decreaseItem, confirmCart, increaseItem, getCart } from "../store/actions/cart.action";
 import styles from "../styles/styles";
 import { currencyFormat } from "../data/functions";
+import { useEffect } from "react";
 
 const CartScreen = () => {
     const colorScheme = useColorScheme();
@@ -19,22 +20,27 @@ const CartScreen = () => {
     const dispatch = useDispatch();
     const items = useSelector(state => state.cart.items);
     const total = useSelector(state => state.cart.total);
+    const user = useSelector(state => state.auth.user);
 
-    const handleDeleteItem = (id) => {
-        dispatch(removeItem(id));
+    const handleDeleteItem = (productId) => {
+        dispatch(removeItem(productId, user.id));
     };
 
-    const handleIncreaseItem = (id) => {
-        dispatch(increaseItem(id));
+    const handleIncreaseItem = (product) => {
+        dispatch(increaseItem(product, user.id));
     };
 
-    const handleDecreaseItem = (id) => {
-        dispatch(decreaseItem(id));
+    const handleDecreaseItem = (product) => {
+        dispatch(decreaseItem(product, user.id));
     };
 
     const handleConfirmCart = () => {
         dispatch(confirmCart(items, total));
     }
+
+    useEffect(() => {
+        dispatch(getCart(user.id))
+    }, [])
 
     const renderCartItem = ({ item }) => (
         <CartItem item={item} onDelete={handleDeleteItem} onDecrease={handleDecreaseItem} onIncrease={handleIncreaseItem} />

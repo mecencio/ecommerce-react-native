@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
-import { Image, Button, FlatList, Text, View, ActivityIndicator, useWindowDimensions, ScrollView, useColorScheme } from "react-native";
+import React from "react";
+import { Image, Button, Text, useWindowDimensions, ScrollView, useColorScheme } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import { addItem } from "../store/actions/cart.action";
 import styles from "../styles/styles";
 import colors from "../styles/constants/colors";
 import { currencyFormat } from "../data/functions";
+import Spinner from "../components/Spinner";
 
 const DetailsScreen = ({ navigation, route }) => {
     const colorScheme = useColorScheme();
@@ -21,20 +22,18 @@ const DetailsScreen = ({ navigation, route }) => {
     const { width, height } = useWindowDimensions();
 
     const handleAddItem = () => {
-        dispatch(addItem(item));
+        dispatch(addItem(item, 1, route?.params?.userId));
     };
 
     if (!item) {
         return (
-            <View style={styles.productsScreenSpinner}>
-                <ActivityIndicator size="large" color={colors.PRINCETON_ORANGE} />
-            </View>
+            <Spinner />
         )
     } else {
         return (
-            <ScrollView style={detailScreenContainer}>
+            <ScrollView style={{...detailScreenContainer, maxHeight: height *0.825}}>
                 <Text style={detailScreenTitle}>{item.name}</Text>
-                <Image style={{ height: height * 0.5, width: "100%" }} source={{ uri: item.img }} />
+                <Image style={{ height: height * 0.5, width: "100%" }} source={{ uri: item.image }} />
                 <Text style={detailScreenPrice}>{ currencyFormat(item.price) }</Text>
                 { item.free_shipping && (
                         <Text style={shipping}>Free shipping</Text>

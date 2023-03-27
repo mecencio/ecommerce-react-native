@@ -34,6 +34,12 @@ export const init = () => {
                 () => resolve(),
                 (_, err) => reject(err)
             );
+            tx.executeSql(
+                "CREATE TABLE IF NOT EXISTS cart (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, idProduct TEXT NOT NULL, name TEXT NOT NULL, image TEXT NOT NULL, quantity INTEGER NOT NULL, price REAL NOT NULL, userId INTEGER NOT NULL);",
+                [],
+                () => resolve(),
+                (_, err) => reject(err)
+            );
         })
     })
     return promise;
@@ -73,20 +79,6 @@ export const fetchUser = (userId) => {
             tx.executeSql(
                 "SELECT * FROM user WHERE id = (?)",
                 [userId],
-                (_, result) => resolve(result),
-                (_, err) => reject(err),
-            )
-        })
-    })
-    return promise;
-}
-
-export const selectAll = () => {
-    const promise = new Promise((resolve, reject) => {
-        db.transaction(tx => {
-            tx.executeSql(
-                "SELECT * FROM user",
-                [],
                 (_, result) => resolve(result),
                 (_, err) => reject(err),
             )
@@ -199,6 +191,84 @@ export const removeCard = (cardId) => {
             tx.executeSql(
                 "DELETE FROM cards WHERE id =(?);",
                 [cardId],
+                (_, result) => resolve(result),
+                (_, err) => reject(err),
+            )
+        })
+    })
+    return promise;
+}
+
+export const loadCart = (userId) => {
+    if (!userId) return
+    const promise = new Promise((resolve, reject) => {
+        db.transaction(tx => {
+            tx.executeSql(
+                "SELECT * FROM cart WHERE userId = (?);",
+                [userId],
+                (_, result) => {
+                    resolve(result)
+                },
+                (_, err) => {
+                    reject(err)
+                },
+            )
+        })
+    })
+    return promise;
+}
+
+export const insertProductToCart = (idProduct, quantity, userId, price, name, image) => {
+    const promise = new Promise((resolve, reject) => {
+        db.transaction(tx => {
+            tx.executeSql(
+                "INSERT INTO cart (idProduct, quantity, userId, price, name, image) VALUES (?, ?, ?, ?, ?, ?);",
+                [idProduct, quantity, userId, price, name, image],
+                (_, result) => resolve(result),
+                (_, error) => reject(error),
+            )
+        })
+    })
+    return promise;
+}
+
+export const searchProductInCart = (idProduct, userId) => {
+    const promise = new Promise((resolve, reject) => {
+        db.transaction(tx => {
+            tx.executeSql(
+                "SELECT * FROM cart WHERE idProduct = (?) AND userId = (?);",
+                [idProduct, userId],
+                (_, result) => resolve(result),
+                (_, err) => reject(err),
+            )
+        })
+    })
+    return promise;
+}
+
+export const updateQuantity = (idProduct, quantity, userId) => {
+    const promise = new Promise((resolve, reject) => {
+        db.transaction(tx => {
+            tx.executeSql(
+                "UPDATE cart SET quantity = (?) WHERE idProduct = (?) AND userId = (?);",
+                [quantity, idProduct, userId],
+                (_, result) => resolve(result),
+                (_, err) => {
+                    console.log(err);
+                    reject(err)
+                },
+            )
+        })
+    })
+    return promise;
+}
+
+export const deleteProductInCart = (idProduct, userId) => {
+    const promise = new Promise((resolve, reject) => {
+        db.transaction(tx => {
+            tx.executeSql(
+                "DELETE FROM cart WHERE idProduct = (?) AND userId = (?);",
+                [idProduct, userId],
                 (_, result) => resolve(result),
                 (_, err) => reject(err),
             )

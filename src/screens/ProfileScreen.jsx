@@ -37,7 +37,7 @@ const ProfileScreen = ({ navigation }) => {
                         <Text style={ProfileScreenImageText}>New Image</Text>
                     </TouchableOpacity>
                 )}
-                <Text style={ProfileScreenHeaderText}>{user.firstname}NICOLAS NAHUEL {user.lastname}</Text>
+                <Text style={ProfileScreenHeaderText}>{user.firstname} {user.lastname}</Text>
             </View>
             <View >
                 <TouchableOpacity onPress={() => console.log("Mis datos")} style={ProfileScreenOptions}>

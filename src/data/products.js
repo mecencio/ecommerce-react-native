@@ -5,7 +5,7 @@ export const PRODUCTS = [
         name: "1 kg de Pan Francés",
         description: "Pan francés; 1 kilo.",
         price: 670,
-        img: "https://images.rappi.com.ar/products/1701424-1604506917147.jpg?e=webp",
+        image: "https://images.rappi.com.ar/products/1701424-1604506917147.jpg?e=webp",
     },
     {
         id: 2,
@@ -13,7 +13,7 @@ export const PRODUCTS = [
         name: "1/2 kg de Pan Francés",
         description: "Pan francés; 1/2 kilo.",
         price: 340,
-        img: "https://images.rappi.com.ar/products/17ccf4e0-e380-41b5-8dec-223af35a07a5-1618250507656.jpeg?e=webp",
+        image: "https://images.rappi.com.ar/products/17ccf4e0-e380-41b5-8dec-223af35a07a5-1618250507656.jpeg?e=webp",
     },
     {
         id: 3,
@@ -21,7 +21,7 @@ export const PRODUCTS = [
         name: "Chipá de queso",
         description: "Chipá de queso; 250g",
         price: 930,
-        img: "https://images.rappi.com.ar/products/1701428-1604506945688.jpg?e=webp",
+        image: "https://images.rappi.com.ar/products/1701428-1604506945688.jpg?e=webp",
     },
     {
         id: 4,
@@ -29,7 +29,7 @@ export const PRODUCTS = [
         name: "Libritos de grasa",
         description: "Libritos de grasa; 250g",
         price: 540,
-        img: "https://images.rappi.com.ar/products/1701439-1604506961992.jpg?e=webp",
+        image: "https://images.rappi.com.ar/products/1701439-1604506961992.jpg?e=webp",
     },
     {
         id: 5,
@@ -37,7 +37,7 @@ export const PRODUCTS = [
         name: "Docena de Medialunas",
         description: "12 medialunas de manteca",
         price: 1500,
-        img: "https://images.rappi.com.ar/products/1701444-1604506989724.jpg?e=webp",
+        image: "https://images.rappi.com.ar/products/1701444-1604506989724.jpg?e=webp",
     },
     {
         id: 6,
@@ -45,7 +45,7 @@ export const PRODUCTS = [
         name: "1/2 Docena de facturas surtidas",
         description: "6 facturas surtidas: 2 de manteca, 1 de grasa, 3 surtidas",
         price: 800,
-        img: "https://images.rappi.com.ar/products/1701442-1604507076252.jpg?e=webp",
+        image: "https://images.rappi.com.ar/products/1701442-1604507076252.jpg?e=webp",
     },
     {
         id: 7,
@@ -53,7 +53,7 @@ export const PRODUCTS = [
         name: "Budines Rellenos X 2",
         description: "2 budines rellenos a elección (con chips, relleno de dulce de leche, relleno de manzana).",
         price: 1920,
-        img: "https://images.rappi.com.ar/products/1701464-1604507327102.jpg?e=webp",
+        image: "https://images.rappi.com.ar/products/1701464-1604507327102.jpg?e=webp",
     },
     {
         id: 8,
@@ -61,7 +61,7 @@ export const PRODUCTS = [
         name: "Budines Clásicos X 2",
         description: "2 budines clasicos a elección (limón, chocolate, vainilla, marmolado).",
         price: 1540,
-        img: "https://images.rappi.com.ar/products/1701464-1604507327102.jpg?e=webp",
+        image: "https://images.rappi.com.ar/products/1701464-1604507327102.jpg?e=webp",
     },
     {
         id: 9,
@@ -69,7 +69,7 @@ export const PRODUCTS = [
         name: "Budín de Limón",
         description: "Budín de Limón",
         price: 770,
-        img: "https://images.rappi.com.ar/products/1701464-1604507327102.jpg?e=webp",
+        image: "https://images.rappi.com.ar/products/1701464-1604507327102.jpg?e=webp",
     },
     {
         id: 10,
@@ -77,7 +77,7 @@ export const PRODUCTS = [
         name: "Budín de Vainilla",
         description: "Budín de Vainilla",
         price: 770,
-        img: "https://images.rappi.com.ar/products/1701464-1604507327102.jpg?e=webp",
+        image: "https://images.rappi.com.ar/products/1701464-1604507327102.jpg?e=webp",
     },
     {
         id: 11,
@@ -85,7 +85,7 @@ export const PRODUCTS = [
         name: "Budín de Chocolate",
         description: "Budín de Chocolate",
         price: 770,
-        img: "https://images.rappi.com.ar/products/1701464-1604507327102.jpg?e=webp",
+        image: "https://images.rappi.com.ar/products/1701464-1604507327102.jpg?e=webp",
     },
     {
         id: 12,
@@ -93,7 +93,7 @@ export const PRODUCTS = [
         name: "Budín Relleno con Chips",
         description: "Budín de naranja, chips de chocolate",
         price: 960,
-        img: "https://images.rappi.com.ar/products/1701464-1604507327102.jpg?e=webp",
+        image: "https://images.rappi.com.ar/products/1701464-1604507327102.jpg?e=webp",
     },
     {
         id: 13,
@@ -101,7 +101,7 @@ export const PRODUCTS = [
         name: "Budín Relleno de DDL",
         description: "Budín de Vainilla relleno de dulce de leche",
         price: 960,
-        img: "https://images.rappi.com.ar/products/1701464-1604507327102.jpg?e=webp",
+        image: "https://images.rappi.com.ar/products/1701464-1604507327102.jpg?e=webp",
     },
     {
         id: 14,
@@ -109,7 +109,7 @@ export const PRODUCTS = [
         name: "Budín Relleno de Chocolate",
         description: "Budín marmolado relleno de chocolate",
         price: 960,
-        img: "https://images.rappi.com.ar/products/1701464-1604507327102.jpg?e=webp",
+        image: "https://images.rappi.com.ar/products/1701464-1604507327102.jpg?e=webp",
     },
     {
         id: 15,
@@ -117,7 +117,7 @@ export const PRODUCTS = [
         name: "Budín Relleno de Manzana",
         description: "Budín de vainilla relleno de manzanas",
         price: 960,
-        img: "https://images.rappi.com.ar/products/1701464-1604507327102.jpg?e=webp",
+        image: "https://images.rappi.com.ar/products/1701464-1604507327102.jpg?e=webp",
     },
     {
         id: 16,
@@ -125,7 +125,7 @@ export const PRODUCTS = [
         name: "Sándwiches de Miga de J&Q X 6",
         description: "6 sándwiches de miga de jamón, queso.",
         price: 1700,
-        img: "https://images.rappi.com.ar/products/c803f901-6dec-46d4-a2e6-fa1e3de49c3f-1659707954871.png?e=webp",
+        image: "https://images.rappi.com.ar/products/c803f901-6dec-46d4-a2e6-fa1e3de49c3f-1659707954871.png?e=webp",
     },
     {
         id: 17,
@@ -133,7 +133,7 @@ export const PRODUCTS = [
         name: "Sándwiches de Miga de J&Q X 12",
         description: "12 sándwiches de miga de jamón, queso.",
         price: 3400,
-        img: "https://images.rappi.com.ar/products/dfce24a5-b0a4-486a-b657-046b213d1de9-1659708252736_hq.jpeg?e=webp",
+        image: "https://images.rappi.com.ar/products/dfce24a5-b0a4-486a-b657-046b213d1de9-1659708252736_hq.jpeg?e=webp",
     },
     {
         id: 18,
@@ -141,6 +141,6 @@ export const PRODUCTS = [
         name: "Sándwiches de Miga de J&Q X 3",
         description: "3 sándwiches de miga de jamón, queso.",
         price: 850,
-        img: "https://images.rappi.com.ar/products/dfce24a5-b0a4-486a-b657-046b213d1de9-1659708252736_hq.jpeg?e=webp",
+        image: "https://images.rappi.com.ar/products/dfce24a5-b0a4-486a-b657-046b213d1de9-1659708252736_hq.jpeg?e=webp",
     },
 ]

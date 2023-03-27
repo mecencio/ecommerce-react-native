@@ -11,7 +11,7 @@ export const LOGOUT = "LOGOUT";
 export const ERROR_LOGIN = "ERROR_LOGIN";
 export const ADD_IMAGE = 'ADD_IMAGE';
 
-export const signup = (email, password) => {
+export const signup = (firstname, lastname, email, password) => {
     return async dispatch => {
         try {
             const response = await fetch(URL_AUTH_SIGNUP, {
@@ -28,7 +28,7 @@ export const signup = (email, password) => {
 
             const data = await response.json();
 
-            const user = new User(data.localId, email)
+            const user = new User(data.localId, email, firstname, lastname)
             try {
                 SecureStore.setItemAsync("userId", data.localId)
                 SecureStore.setItemAsync("idToken", data.idToken)

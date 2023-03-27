@@ -7,6 +7,7 @@ import DetailsScreen from "../screens/DetailScreen";
 import ProductsScreen from "../screens/ProductsScreen";
 import colors from "../styles/constants/colors";
 import styles from "../styles/styles";
+import { useSelector } from "react-redux";
 
 const Stack = createNativeStackNavigator();
 
@@ -14,8 +15,7 @@ export default HomeNavigator = () => {
     const colorScheme = useColorScheme();
     const homeStyle = colorScheme === "light" ? styles.homeStyle : styles.homeStyleDark;
     const IconColor = colorScheme === "light" ? colors.DARK : colors.PRINCETON_ORANGE;
-    const [text, setText] = useState("");
-    const [touched, setTouched] = useState(false);
+    const user = useSelector(state => state.auth.user);
 
     return (
         <Stack.Navigator
@@ -56,6 +56,7 @@ export default HomeNavigator = () => {
             <Stack.Screen
                 name="Details"
                 component={DetailsScreen}
+                initialParams={{userId: user.id}}
                 options={({ route }) => ({
                     title: route.params.name,
                     headerTintColor: IconColor,
